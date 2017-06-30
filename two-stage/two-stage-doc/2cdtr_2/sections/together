@@ -1,0 +1,786 @@
+%set-up
+
+
+\textbf{\large Set-up}\\
+We focus on the case of a two-stage treatment regime with two competing outcomes and binary treatment options. The observed data are denoted by $\{(\bs{X}_{1,i}, A_{1,i},\bs{X}_{2,i}, A_{2,i} Y_{i},Z_{i})\}_{i=1}^{n}$, which comprises $n$ identically, independently distributed patient trajectories $\{(\bs{X}_{1}, A_{1},\bs{X}_{2}, A_{2}, Y,Z)\}$. Capital letters denote random variables; lower case letters denote realized values of these random variables. Let $\bs{X}_1$ be a patient baseline covariate, $A_1$ be the first-stage treatment variable, $\bs{X}_2$ be the patient covariate collected between frist decision point and second decision point, $A_2$ be the second-stage treatment variable. The primary and secondary competing outcomes are denoted by $Y$ and $Z$, respectively. The outcome $Y$ is coded so that higher values are better, and the outcome $Z$ is coded so that the lower values are better.  A dynamic treatment regime, $\bs{d} = (d_1, d_2)$, is a pair of decision rules. For each $t = 1, 2$, let $\bs{H}_t$ denote the patient history information up to the decision point $t$, i.e., $\bs{H}^\itl_1 = (1, \bs{X}^\itl_1)$ and  $\bs{H}^\itl_2 = (1, \bs{X}^\itl_1, A_1, \bs{X}^\itl_2)$. For each $t = 1, 2$, $d_t : \text{dom}(\bs{H}_{t}) \to \text{dom}(A_t)$, is a function that maps from the space of $\bs{H}_{t}$ to the space of feasible treatment $A_t$ at the time point $t$. In summary, the observed data trajectory is denoted
+$$\bs{W}= \{(\bs{X}_{1}, A_{1}, \, \bs{X}_{2},  \, A_{2}, \,  Y, \, Z)\},$$
+$$ \bs{H}_{1}^\itl = (1,  \bs{X}_{1}^\itl)$$
+$$\bs{H}_2^\itl = (1,  \bs{X}_1^\itl,  A_1, \bs{X}_2^\itl) = ( \bs{H}_1^\itl, A_1, \bs{X}_2^\itl )$$ \\
+
+To construct an estimand of interest and make inference from observed data, we follow the potential outcomes or counter-factual framework, which quantifies treatment effects of dynamic treatment regimes, proposed by Neyman, Rubin and Robins. For an arbitrary treatment sequence $(a_1, a_2)$, the set of potential outcomes of the patient is
+$$W^*(a_1, a_2) = \left\{ \bs{X}_2^*(a_1), Y^*(a_1, a_2), Z^*(a_1, a_2): (a_1, a_2) \in \{-1, 1 \}^2 \right\}$$
+$$\bs{H}_2^*(a_1) = \left\{ 1, \bs{X}_1^\itl, a_1, \bs{X}^{*\intercal}_2(a_1)\right\}^\itl$$
+
+Furthermore, the potential outcomes of the patient following a treatment regime $\bs{d}$ are denoted as $Y^{*}(\bs{d})=Y^{*}\left(d_1, d_2\right)$ and $Z^{*}(\bs{d})=Z^{*}\left(d_1, d_2\right)$.\\
+
+\textbf{\large Define a constrained optimal regime }\\
+ Our goal is to find a optimal constrained regime, $\bs{d}_{\kappa}^{0}$, which, at the population level, maximizes the expectation of the primary potential outcome $\mathbb{E}Y^{*}\left( \bs{d}\right) $, subject to an upper bound on the expectation of the secondary potential outcome $\mathbb{E}Z^{*}\left( \bs{d}\right) $.  Therefore, the two-stage constrained optimal regime problem is defined with respect to potential outcomes as
+	\begin{equation*}
+	\begin{aligned}
+	& \underset{\bs{d} \in \mathcal{D}}{\txt{maximize}}
+	& & \mb{E}Y^*( \bs{d} ) \\
+	& \txt{subject to}
+	& &  \mb{E}Z^*( \bs{d} ) \le \kappa,
+	\end{aligned}
+	\end{equation*}
+	where $\bs{d} = (d_1, d_2)$ is the two stage decision rule and $\mathcal{D}$ is the class of two-stage regimes under consideration. As we are restricted to the class of the linear decision rule, the class of decision rules, indexed by $\bs{\tau} = (\tau_1, \tau_2)$,  is
+	$\mathcal{D} = \{ \bs{d} = (d_1, d_2)\}$ where $ d_1(\bs{h}_1; \bs{\tau}_1) = \tsgn(\bs{h}_1^\itl\bs{\tau}_1) = \tsgn\lt\{r_1(\bs{h}_1; \bs{\tau}_1)\rt\},$
+	and $d_2(\bs{h}_2;\bs{\tau}_2) = \tsgn(\bs{h}_2^\itl\bs{\tau}_2) = \tsgn\{ r_2(\bs{h}_2; \bs{\tau}_2 )\}$. Let $r_1(\bs{h}_1; \bs{\tau}_1) = \bs{h}^\itl_1 \bs{\tau}_1$ and $r_2(\bs{h}_2; \bs{\tau}_2) = \bs{h}^\itl_2 \bs{\tau}_2$. $\bs{\tau}^{0\itl} = (\bs{\tau}_1^{0\itl},\bs{\tau}_2^{0\itl})$ are the indexing parameters for the constrained optimal dynamic treatment regime defined. Hence, both $\mb{E}Y^*(\bs{d})$ and $\mb{E}Z^*(\bs{d})$ can be considered as functions of $\bs{\tau}$. As we will be solving them over $\bs{\tau} = ( \bs{\tau}_1, \bs{\tau}_2)$, we use the notations of $\mb{E}Y^*(\bs{\tau})$ and $\mb{E}Z^*(\bs{\tau})$ from now on. As only the directions of $\bs{h}^\itl_t\bs{\tau}_t$, $t = 1, 2$, matters, we restrict $\bs{\tau}_t$ to be unit vectors, i.e., $\bs{\tau}^\itl_t\bs{\tau}_t = 1$ . Then, the problem above can be written as
+	\begin{equation}
+	\begin{aligned}
+	& \underset{\bs{\tau}}{\txt{maximize}}
+	& & \mb{E}Y^*( \bs{\tau} ) \\
+	& \txt{subject to}
+	& &  \kappa - \mb{E}Z^*( \bs{\tau} ) \le 0, \\
+	& \,
+	& & \bs{\tau}_1^\itl \bs{\tau}_1^\itl - 1 =0 \text{, and }  \bs{\tau}_2^\itl \bs{\tau}_2^\itl - 1 = 0.
+	\end{aligned}
+	\end{equation}
+	A constrained optimal dynamic treatment regime  is defined to be a solution to the problem above, and is denoted by
+	$\bs{d}_{\kappa}^0 = ( d_{\kappa,1}^0,  d_{\kappa,2}^0)$, where $d_{\kappa,1}^0(\bs{h}_1) = \tsgn(\bs{h}^\itl_1\bs{\tau}^0_{1,\kappa}) =\tsgn\lt\{ r_1(\bs{h}_1; \bs{\tau}^0_{1,\kappa})\rt\}$ and $d_{\kappa,2}^0(\bs{h}_2) = \tsgn(\bs{h}^\itl_2\bs{\tau}^0_{2,\kappa}) = \tsgn\lt\{ r_2(\bs{h}_2; \bs{\tau}^0_{2,\kappa})\rt\}$.
+
+\begin{comment}
+\textbf{ Convergence of the Penalty-Barrier Trajectory  $\bs{\tau}^*_{\kappa}(\mu)$  to $\bs{\tau}^0_{\kappa}$}\\
+
+\textbf{ Convergence in probabilty of the estimator  to $\hat{\bs{\tau}}_{\kappa}(\mu)$ to  the Penalty-Barrier Trajectory  $\bs{\tau}^*_{\kappa}(\mu)$} \\
+
+%\mnote{ convergence $\hat{\tau}_{\kappa}(\mu) \overset{p}{\to} \tau^*_{\kappa}(\mu) \to  \tau^0_{\kappa}(\mu)$}
+
+Step 1:  $\underset{\bs{\tau}, \| \bs{\tau}_1 \|^2 = 1, \| \bs{\tau}_2 \|^2 = 1}{\sup} \mid \hat{S} (\bs{\tau}, \mu) -S^*( \bs{\tau}, \mu)  \mid = o_p(1)$ \\
+
+Let $S^*(\bs{\tau}, \mu) = \mb{E} Y^*(\bs{\tau}) + \mu \txt{log} \lt\{ \kappa - \mb{E} Z^*(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\},$ and $\widehat{S}(\bs{\tau}, \mu) = \wh{\mb{E}} Y(\bs{\tau}) + \mu \, \txt{log} \lt\{ \kappa - \wh{\mb{E}}Z(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\},$ then
+$$\widehat{S}(\bs{\tau}, \mu) - S^*(\bs{\tau}, \mu) = \hat{\mb{E}} Y(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  + \mu \, \txt{log}\frac{ \kappa - \hat{\mb{E}}Z(\bs{\tau})}{ \kappa - \mb{E} Z^*(\bs{\tau})}$$
+
+First look at $\hat{\mb{E}} Y_n(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})$
+
+$Y_n(\bs{\tau}) \sim F_{Y_n}(y;\bs{\tau})$
+
+If $Y_n(\bs{\tau}) \overset{d}{\to} Y^*(\bs{\tau})$, aka, $\wh{F}_{Y_n}(y;\bs{\tau}) \to F_Y(y;\bs{\tau}), \text{as } n \to \infty$, for all $y$ at which $F_Y(\cdot, \bs{\tau})$ is continuous. Also,  for each $\bs{\tau}$, if there exists some random variable $T$, such that  $|Y_n(\bs{\tau})| \le |T|$ for all $n$ and $\mb{E} |T| \le \infty$, then $\wh{\mb{E}} Y_n(\bs{\tau}) \to \mb{E} Y^*(\bs{\tau})$.
+Thus, we have $\wh{\mb{E}} Y_n(\bs{\tau}) - \mb{E} Y^*(\bs{\tau}) = o_p(1)$ \\
+
+Step 2:  conditions for $\wh{F}_{Y_n}(y;\bs{\tau}) \to F_Y(y;\bs{\tau}), \text{as } n \to \infty$\\
+
+Step 3:  Consistency of $\wh{\bs{\tau}}_{n,\kappa} \to \bs{\tau}^*_{\kappa}$. It can be proven by following similar proof in Lemma 2 at one-stage. \\
+
+Step 4: Asymptotic Normality of $\wh{\bs{\tau}}_{n,\kappa}$ \\
+Taylor expansion, for each $\mu$ \\
+
+$\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu}) = \nabla\wh{S}(\wh{\bs{\tau}}_{\kappa,\mu}) - \nabla^2\wh{S}(\tilde{\bs{\tau}}_{\kappa,\mu} ) (\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}^*_{\kappa,\mu} )$
+
+
+$\sqrt{n}\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu}) =  -\sqrt{n} \nabla^2\wh{S}(\tilde{\bs{\tau}}_{\kappa,\mu} ) (\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}^*_{\kappa,\mu} )$
+
+\begin{flalign*}
+\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu}) = \nabla \mb{E} Y(\bs{\tau}) - \mu \frac{\nabla \mb{E} Z(\bs{\tau})}{  \kappa - \mb{E} Z(\bs{\tau}) }
+\end{flalign*}
+
+\begin{flalign*}
+\nabla^2\wh{S}(\bs{\tau}^*_{\kappa,\mu}) = \nabla^2 \mb{E} Y(\bs{\tau}) - \mu \frac{\nabla^2 \mb{E} Z(\bs{\tau}) \lt[ \kappa - \mb{E} Z(\bs{\tau}) \rt] + \{ \nabla \mb{E} Z(\bs{\tau}) \}^2}{  \lt\{\kappa - \mb{E} Z(\bs{\tau}) \rt\}^2}
+\end{flalign*}
+\begin{flalign*}
+& \nabla \wh{\mb{E}} Y(\bs{\tau})\\
+= & \nabla\int y \,d \wh{F}_{Y(\bs{\tau})}(y) \\
+= &  \nabla\int y \lt[ \,d \iint  F_{\epsilon}\lt\{ y - m_Y - \tsgn(r_2)c_Y\rt\}\,d G_{Y}\lt\{ m_Y, c_Y, r_2 \mid \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1) \rt] \\
+= &  \nabla\int y \lt[ \,d \iint  F_{\epsilon}\lt\{ y - m_Y - \tsgn(r_2)c_Y\rt\}\,d G_{Y}\lt\{ m_Y, c_Y, r_2 \mid \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1) \rt]
+\end{flalign*}
+Assuming $d G_Y$ is correctly specified and is differentiable and continuous
+\\
+
+Step 5: Projected CI for $\wh{\mb{E}} Y_n(\wh{\bs{\tau}}_{n,\kappa})$
+
+Is $d F - d \hat{F} = d(F - \hat{F})$ ??\\
+Note:
+convergence $\hat{\tau}_{\kappa}(\mu) \overset{p}{\to} \tau^*_{\kappa}(\mu) \to  \tau^0_{\kappa}(\mu)$
+\begin{flalign*}
+&  \hat{\mb{E}} Y(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  \\
+= & \int y \,d \wh{F}_{Y_d} (y) - \int y \,d F_{Y^*_d} (y) \\
+= &  \int y  \lt\{  \,d\wh{F}_{Y_d} (y) - \,d F_{Y^*_d} (y) \rt\}  \\
+% = & \int y  \lt\{ \wh{f}_{Y_d} (y) - f_{Y^*_d} (y) \rt\} \,dy
+\end{flalign*}
+If for any arbitrary $\bs{d}$, $d F_{Y^*_{\bs{d}}} (y) $ is a density and $d\wh{F}_{Y_{\bs{d}}}(y)$ is a uniformly consistent estimator; that is $\underset{y}{\sup} \mid d\wh{F}_{Y_d} (y) - d F_{Y^*_d} (y) \mid =o_p(1)$, then
+
+\begin{flalign*}
+&  \hat{\mb{E}} Y(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  \\
+= & \int y \,d \wh{F}_{Y_d} (y) - \int y \,d F_{Y^*_d} (y) \\
+= &  \int y  \lt\{  \,d\wh{F}_{Y_d} (y) - \,d F_{Y^*_d} (y) \rt\}  \\
+\le & \int \mid y \mid \, dy  \cdot o_p(1) \\
+% = & \int y  \lt\{ \wh{f}_{Y_d} (y) - f_{Y^*_d} (y) \rt\} \,dy\\
+= &  \iint  F_{\varepsilon_Y}\lt[ y - m(\bs{h}_2) - \tsgn\lt\{r_2(\bs{h}_2; \bs{\tau}_2)\rt\}c_Y(\bs{h}_2) \rt] \,d G_{Y}\lt\{ m_Y, c_Y, r_2 \rvert \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1)
+\end{flalign*}
+
+\newpage
+\textbf{Reference}\\
+
+\textbf{Convergence in Distribution}\\
+Suppose that $(X_1, X_2, \dots)$ and $X$ are real-valued random variables with distribution functions $(F_1, F_2,  \dots)$ and $F$, respectively. We say that the distribution of $X_n$ converges to the distribution of $X$ as $n \to \infty$ if
+$$F_n(x) \to F(x), \text{as } n \to \infty$$
+for all $x$ at which $F$ is continuous. \\
+% Link https://www.probabilitycourse.com/chapter7/7_2_4_convergence_in_distribution.php
+
+\textbf{Lebesgue's Dominated Convergence Theorem}\\
+If for some random variable $Z$, $| X_n | \le | Z |$ for all $n$ and $\mb{E} | Z | \le \infty$, then $X_n \overset{d}{\to} X$ implies that $\mb{E} X_n \to \mb{E} X$.
+
+\end{comment}
+
+%set-up
+
+
+\textbf{\large Set-up}\\
+We focus on the case of a two-stage treatment regime with two competing outcomes and binary treatment options. The observed data are denoted by $\{(\bs{X}_{1,i}, A_{1,i},\bs{X}_{2,i}, A_{2,i} Y_{i},Z_{i})\}_{i=1}^{n}$, which comprises $n$ identically, independently distributed patient trajectories $\{(\bs{X}_{1}, A_{1},\bs{X}_{2}, A_{2}, Y,Z)\}$. Capital letters denote random variables; lower case letters denote realized values of these random variables. Let $\bs{X}_1$ be a patient baseline covariate, $A_1$ be the first-stage treatment variable, $\bs{X}_2$ be the patient covariate collected between frist decision point and second decision point, $A_2$ be the second-stage treatment variable. The primary and secondary competing outcomes are denoted by $Y$ and $Z$, respectively. The outcome $Y$ is coded so that higher values are better, and the outcome $Z$ is coded so that the lower values are better.  A dynamic treatment regime, $\bs{d} = (d_1, d_2)$, is a pair of decision rules. For each $t = 1, 2$, let $\bs{H}_t$ denote the patient history information up to the decision point $t$, i.e., $\bs{H}^\itl_1 = (1, \bs{X}^\itl_1)$ and  $\bs{H}^\itl_2 = (1, \bs{X}^\itl_1, A_1, \bs{X}^\itl_2)$. For each $t = 1, 2$, $d_t : \text{dom}(\bs{H}_{t}) \to \text{dom}(A_t)$, is a function that maps from the space of $\bs{H}_{t}$ to the space of feasible treatment $A_t$ at the time point $t$. In summary, the observed data trajectory is denoted
+$$\bs{W}= \{(\bs{X}_{1}, A_{1}, \, \bs{X}_{2},  \, A_{2}, \,  Y, \, Z)\},$$
+$$ \bs{H}_{1}^\itl = (1,  \bs{X}_{1}^\itl)$$
+$$\bs{H}_2^\itl = (1,  \bs{X}_1^\itl,  A_1, \bs{X}_2^\itl) = ( \bs{H}_1^\itl, A_1, \bs{X}_2^\itl )$$ \\
+
+To construct an estimand of interest and make inference from observed data, we follow the potential outcomes or counter-factual framework, which quantifies treatment effects of dynamic treatment regimes, proposed by Neyman, Rubin and Robins. For an arbitrary treatment sequence $(a_1, a_2)$, the set of potential outcomes of the patient is
+$$W^*(a_1, a_2) = \left\{ \bs{X}_2^*(a_1), Y^*(a_1, a_2), Z^*(a_1, a_2): (a_1, a_2) \in \{-1, 1 \}^2 \right\}$$
+$$\bs{H}_2^*(a_1) = \left\{ 1, \bs{X}_1^\itl, a_1, \bs{X}^{*\intercal}_2(a_1)\right\}^\itl$$
+
+Furthermore, the potential outcomes of the patient following a treatment regime $\bs{d}$ are denoted as $Y^{*}(\bs{d})=Y^{*}\left(d_1, d_2\right)$ and $Z^{*}(\bs{d})=Z^{*}\left(d_1, d_2\right)$.\\
+
+\textbf{\large Define a constrained optimal regime }\\
+ Our goal is to find a optimal constrained regime, $\bs{d}_{\kappa}^{0}$, which, at the population level, maximizes the expectation of the primary potential outcome $\mathbb{E}Y^{*}\left( \bs{d}\right) $, subject to an upper bound on the expectation of the secondary potential outcome $\mathbb{E}Z^{*}\left( \bs{d}\right) $.  Therefore, the two-stage constrained optimal regime problem is defined with respect to potential outcomes as
+	\begin{equation*}
+	\begin{aligned}
+	& \underset{\bs{d} \in \mathcal{D}}{\txt{maximize}}
+	& & \mb{E}Y^*( \bs{d} ) \\
+	& \txt{subject to}
+	& &  \mb{E}Z^*( \bs{d} ) \le \kappa,
+	\end{aligned}
+	\end{equation*}
+	where $\bs{d} = (d_1, d_2)$ is the two stage decision rule and $\mathcal{D}$ is the class of two-stage regimes under consideration. As we are restricted to the class of the linear decision rule, the class of decision rules, indexed by $\bs{\tau} = (\tau_1, \tau_2)$,  is
+	$\mathcal{D} = \{ \bs{d} = (d_1, d_2)\}$ where $ d_1(\bs{h}_1; \bs{\tau}_1) = \tsgn(\bs{h}_1^\itl\bs{\tau}_1) = \tsgn\lt\{r_1(\bs{h}_1; \bs{\tau}_1)\rt\},$
+	and $d_2(\bs{h}_2;\bs{\tau}_2) = \tsgn(\bs{h}_2^\itl\bs{\tau}_2) = \tsgn\{ r_2(\bs{h}_2; \bs{\tau}_2 )\}$. Let $r_1(\bs{h}_1; \bs{\tau}_1) = \bs{h}^\itl_1 \bs{\tau}_1$ and $r_2(\bs{h}_2; \bs{\tau}_2) = \bs{h}^\itl_2 \bs{\tau}_2$. $\bs{\tau}^{0\itl} = (\bs{\tau}_1^{0\itl},\bs{\tau}_2^{0\itl})$ are the indexing parameters for the constrained optimal dynamic treatment regime defined. Hence, both $\mb{E}Y^*(\bs{d})$ and $\mb{E}Z^*(\bs{d})$ can be considered as functions of $\bs{\tau}$. As we will be solving them over $\bs{\tau} = ( \bs{\tau}_1, \bs{\tau}_2)$, we use the notations of $\mb{E}Y^*(\bs{\tau})$ and $\mb{E}Z^*(\bs{\tau})$ from now on. As only the directions of $\bs{h}^\itl_t\bs{\tau}_t$, $t = 1, 2$, matters, we restrict $\bs{\tau}_t$ to be unit vectors, i.e., $\bs{\tau}^\itl_t\bs{\tau}_t = 1$ . Then, the problem above can be written as
+	\begin{equation}
+	\begin{aligned}
+	& \underset{\bs{\tau}}{\txt{maximize}}
+	& & \mb{E}Y^*( \bs{\tau} ) \\
+	& \txt{subject to}
+	& &  \kappa - \mb{E}Z^*( \bs{\tau} ) \le 0, \\
+	& \,
+	& & \bs{\tau}_1^\itl \bs{\tau}_1^\itl - 1 =0 \text{, and }  \bs{\tau}_2^\itl \bs{\tau}_2^\itl - 1 = 0.
+	\end{aligned}
+	\end{equation}
+	A constrained optimal dynamic treatment regime  is defined to be a solution to the problem above, and is denoted by
+	$\bs{d}_{\kappa}^0 = ( d_{\kappa,1}^0,  d_{\kappa,2}^0)$, where $d_{\kappa,1}^0(\bs{h}_1) = \tsgn(\bs{h}^\itl_1\bs{\tau}^0_{1,\kappa}) =\tsgn\lt\{ r_1(\bs{h}_1; \bs{\tau}^0_{1,\kappa})\rt\}$ and $d_{\kappa,2}^0(\bs{h}_2) = \tsgn(\bs{h}^\itl_2\bs{\tau}^0_{2,\kappa}) = \tsgn\lt\{ r_2(\bs{h}_2; \bs{\tau}^0_{2,\kappa})\rt\}$.
+
+\begin{comment}
+\textbf{ Convergence of the Penalty-Barrier Trajectory  $\bs{\tau}^*_{\kappa}(\mu)$  to $\bs{\tau}^0_{\kappa}$}\\
+
+\textbf{ Convergence in probabilty of the estimator  to $\hat{\bs{\tau}}_{\kappa}(\mu)$ to  the Penalty-Barrier Trajectory  $\bs{\tau}^*_{\kappa}(\mu)$} \\
+
+%\mnote{ convergence $\hat{\tau}_{\kappa}(\mu) \overset{p}{\to} \tau^*_{\kappa}(\mu) \to  \tau^0_{\kappa}(\mu)$}
+
+Step 1:  $\underset{\bs{\tau}, \| \bs{\tau}_1 \|^2 = 1, \| \bs{\tau}_2 \|^2 = 1}{\sup} \mid \hat{S} (\bs{\tau}, \mu) -S^*( \bs{\tau}, \mu)  \mid = o_p(1)$ \\
+
+Let $S^*(\bs{\tau}, \mu) = \mb{E} Y^*(\bs{\tau}) + \mu \txt{log} \lt\{ \kappa - \mb{E} Z^*(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\},$ and $\widehat{S}(\bs{\tau}, \mu) = \wh{\mb{E}} Y(\bs{\tau}) + \mu \, \txt{log} \lt\{ \kappa - \wh{\mb{E}}Z(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\},$ then
+$$\widehat{S}(\bs{\tau}, \mu) - S^*(\bs{\tau}, \mu) = \hat{\mb{E}} Y(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  + \mu \, \txt{log}\frac{ \kappa - \hat{\mb{E}}Z(\bs{\tau})}{ \kappa - \mb{E} Z^*(\bs{\tau})}$$
+
+First look at $\hat{\mb{E}} Y_n(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})$
+
+$Y_n(\bs{\tau}) \sim F_{Y_n}(y;\bs{\tau})$
+
+If $Y_n(\bs{\tau}) \overset{d}{\to} Y^*(\bs{\tau})$, aka, $\wh{F}_{Y_n}(y;\bs{\tau}) \to F_Y(y;\bs{\tau}), \text{as } n \to \infty$, for all $y$ at which $F_Y(\cdot, \bs{\tau})$ is continuous. Also,  for each $\bs{\tau}$, if there exists some random variable $T$, such that  $|Y_n(\bs{\tau})| \le |T|$ for all $n$ and $\mb{E} |T| \le \infty$, then $\wh{\mb{E}} Y_n(\bs{\tau}) \to \mb{E} Y^*(\bs{\tau})$.
+Thus, we have $\wh{\mb{E}} Y_n(\bs{\tau}) - \mb{E} Y^*(\bs{\tau}) = o_p(1)$ \\
+
+Step 2:  conditions for $\wh{F}_{Y_n}(y;\bs{\tau}) \to F_Y(y;\bs{\tau}), \text{as } n \to \infty$\\
+
+Step 3:  Consistency of $\wh{\bs{\tau}}_{n,\kappa} \to \bs{\tau}^*_{\kappa}$. It can be proven by following similar proof in Lemma 2 at one-stage. \\
+
+Step 4: Asymptotic Normality of $\wh{\bs{\tau}}_{n,\kappa}$ \\
+Taylor expansion, for each $\mu$ \\
+
+$\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu}) = \nabla\wh{S}(\wh{\bs{\tau}}_{\kappa,\mu}) - \nabla^2\wh{S}(\tilde{\bs{\tau}}_{\kappa,\mu} ) (\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}^*_{\kappa,\mu} )$
+
+
+$\sqrt{n}\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu}) =  -\sqrt{n} \nabla^2\wh{S}(\tilde{\bs{\tau}}_{\kappa,\mu} ) (\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}^*_{\kappa,\mu} )$
+
+\begin{flalign*}
+\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu}) = \nabla \mb{E} Y(\bs{\tau}) - \mu \frac{\nabla \mb{E} Z(\bs{\tau})}{  \kappa - \mb{E} Z(\bs{\tau}) }
+\end{flalign*}
+
+\begin{flalign*}
+\nabla^2\wh{S}(\bs{\tau}^*_{\kappa,\mu}) = \nabla^2 \mb{E} Y(\bs{\tau}) - \mu \frac{\nabla^2 \mb{E} Z(\bs{\tau}) \lt[ \kappa - \mb{E} Z(\bs{\tau}) \rt] + \{ \nabla \mb{E} Z(\bs{\tau}) \}^2}{  \lt\{\kappa - \mb{E} Z(\bs{\tau}) \rt\}^2}
+\end{flalign*}
+\begin{flalign*}
+& \nabla \wh{\mb{E}} Y(\bs{\tau})\\
+= & \nabla\int y \,d \wh{F}_{Y(\bs{\tau})}(y) \\
+= &  \nabla\int y \lt[ \,d \iint  F_{\epsilon}\lt\{ y - m_Y - \tsgn(r_2)c_Y\rt\}\,d G_{Y}\lt\{ m_Y, c_Y, r_2 \mid \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1) \rt] \\
+= &  \nabla\int y \lt[ \,d \iint  F_{\epsilon}\lt\{ y - m_Y - \tsgn(r_2)c_Y\rt\}\,d G_{Y}\lt\{ m_Y, c_Y, r_2 \mid \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1) \rt]
+\end{flalign*}
+Assuming $d G_Y$ is correctly specified and is differentiable and continuous
+\\
+
+Step 5: Projected CI for $\wh{\mb{E}} Y_n(\wh{\bs{\tau}}_{n,\kappa})$
+
+Is $d F - d \hat{F} = d(F - \hat{F})$ ??\\
+Note:
+convergence $\hat{\tau}_{\kappa}(\mu) \overset{p}{\to} \tau^*_{\kappa}(\mu) \to  \tau^0_{\kappa}(\mu)$
+\begin{flalign*}
+&  \hat{\mb{E}} Y(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  \\
+= & \int y \,d \wh{F}_{Y_d} (y) - \int y \,d F_{Y^*_d} (y) \\
+= &  \int y  \lt\{  \,d\wh{F}_{Y_d} (y) - \,d F_{Y^*_d} (y) \rt\}  \\
+% = & \int y  \lt\{ \wh{f}_{Y_d} (y) - f_{Y^*_d} (y) \rt\} \,dy
+\end{flalign*}
+If for any arbitrary $\bs{d}$, $d F_{Y^*_{\bs{d}}} (y) $ is a density and $d\wh{F}_{Y_{\bs{d}}}(y)$ is a uniformly consistent estimator; that is $\underset{y}{\sup} \mid d\wh{F}_{Y_d} (y) - d F_{Y^*_d} (y) \mid =o_p(1)$, then
+
+\begin{flalign*}
+&  \hat{\mb{E}} Y(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  \\
+= & \int y \,d \wh{F}_{Y_d} (y) - \int y \,d F_{Y^*_d} (y) \\
+= &  \int y  \lt\{  \,d\wh{F}_{Y_d} (y) - \,d F_{Y^*_d} (y) \rt\}  \\
+\le & \int \mid y \mid \, dy  \cdot o_p(1) \\
+% = & \int y  \lt\{ \wh{f}_{Y_d} (y) - f_{Y^*_d} (y) \rt\} \,dy\\
+= &  \iint  F_{\varepsilon_Y}\lt[ y - m(\bs{h}_2) - \tsgn\lt\{r_2(\bs{h}_2; \bs{\tau}_2)\rt\}c_Y(\bs{h}_2) \rt] \,d G_{Y}\lt\{ m_Y, c_Y, r_2 \rvert \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1)
+\end{flalign*}
+
+\newpage
+\textbf{Reference}\\
+
+\textbf{Convergence in Distribution}\\
+Suppose that $(X_1, X_2, \dots)$ and $X$ are real-valued random variables with distribution functions $(F_1, F_2,  \dots)$ and $F$, respectively. We say that the distribution of $X_n$ converges to the distribution of $X$ as $n \to \infty$ if
+$$F_n(x) \to F(x), \text{as } n \to \infty$$
+for all $x$ at which $F$ is continuous. \\
+% Link https://www.probabilitycourse.com/chapter7/7_2_4_convergence_in_distribution.php
+
+\textbf{Lebesgue's Dominated Convergence Theorem}\\
+If for some random variable $Z$, $| X_n | \le | Z |$ for all $n$ and $\mb{E} | Z | \le \infty$, then $X_n \overset{d}{\to} X$ implies that $\mb{E} X_n \to \mb{E} X$.
+
+\end{comment}
+
+% modeling conditional distributions
+
+
+\textbf{\large Reformalize the problem using penalty barrier}\\
+Barrier penalty function is used to re-formalize  Problem (1), with additional restrictions on both the euclidean norms of $\bs{\tau}_1$ and $\bs{\tau}_2$ to be 1 for identification, for a decreasing sequence $\{\mu\}$, where $\mu \to 0$,
+\begin{equation}
+\underset{\bs{\tau}}{\max }\,\, \mb{E} Y^*(\bs{\tau}) + \mu \txt{log} \lt\{ \kappa - \mb{E} Z^*(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\}
+\end{equation}
+
+Let $\bs{\tau}^{*\itl}_{\kappa}(\mu) = \{\bs{\tau}^{*\itl}_{\kappa,1}(\mu), \bs{\tau}^{*\itl}_{\kappa,2}(\mu)\}$ denote a solution to Problem (2), and $\bs{\tau}^{*\itl}_{\kappa,\mu} = \{\bs{\tau}^{*\itl}_{\kappa,\mu, 1}, \bs{\tau}^{*\itl}_{\kappa, \mu, 2}\}$ for short. The corresponding regime is denoted by $\bs{d}^*_{\kappa}(\mu) = \lt\{d^*_{1,\kappa}(\mu), d^*_{2,\kappa}(\mu)\rt\}$, and $\bs{d}^*_{\kappa,\mu} = \lt\{d^*_{\kappa,\mu,1}, d^*_{\kappa,\mu,2}\rt\}$ for short. Then, $d^*_{\kappa,\mu,1}(\bs{h}_1) = \tsgn(\bs{h}^\itl_1 \bs{\tau}^*_{\kappa,\mu,1})$, and $d^*_{\kappa,\mu,2}(\bs{h}_2) = \tsgn(\bs{h}^\itl_2 \bs{\tau}^*_{\kappa,\mu,2})$. For short notation, we let $S^*(\bs{\tau}, \mu) = \mb{E} Y^*(\bs{\tau}) + \mu \txt{log} \lt\{ \kappa - \mb{E} Z^*(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\}$.  \\
+
+\textbf{\large Convergence of the Penalty-Barrier Trajectory  $\bs{\tau}^*_{\kappa}(\mu)$  to $\bs{\tau}^0_{\kappa}$}\\
+
+We again examine the conditions under which the penalty-barrier trajectory $\bs{\tau}^*_{\kappa}(\mu)$ converges to the original constrained maximizer $\bs{\tau}^0_{\kappa}$, of which details are provided Appendix 1 Proof Draft 1. We specify  the conditions needed for our problem as follows. For notation simplicity in this section, we let $f(\bs{\tau}) = \mb{E} Y^*(\bs{\tau})$, $c_1 (\bs{\tau}) = \kappa - \mb{E}Z^*(\bs{\tau})$, $c_2(\bs{\tau}) = \bs{\tau}_1^\itl \bs{\tau}_1 - 1$, and $c_3(\bs{\tau}) = \bs{\tau}_2^\itl \bs{\tau}_2 - 1$. Let $g(\bs{\tau})$ denote the gradient of $f(\bs{\tau})$, i.e., $g(\bs{\tau}) = \nabla f(\bs{\tau}) = \nabla \mb{E}Y^*(\bs{\tau})$. Also, let $\bs{c}(\bs{\tau})$ be the vector of constraint functions $\{c_i(\bs{\tau})\}$, $i = 1, 2, 3$. The Jacobian matrix $\bs{c}^{\prime}(\bs{\tau})$ of first derivative of $\bs{c}(\bs{\tau})$ has row $\{\nabla c_{i}(\bs{\tau})\}^{\itl}$, and we use $J(\bs{\tau})$ to denote this Jacobian for concise.\\
+\begin{lemma}[Conditions for the trajectory $\{ \bs{\tau}_{\kappa}^*(\mu) \}$ converging to $\bs{\tau}^0_{\kappa}$\cite{Nocedal1999,fiacco,Forsgren2002}]
+Assume
+\begin{enumerate}
+		\item the functions $f$, $c_1$, $c_2$, and $c_3$ are twice differentiable with respect to $\bs{\tau}$;
+		\item the gradients $\nabla c_1$, $\nabla c_2$, and $\nabla c_3$ are linearly independent, where the gradients are taken with respect to $\bs{\tau}$;
+		\item strict complementarity holds for  $\lambda_1^0 c_1(\bs{\tau}_{\kappa}^0) = 0$, where $\lambda_1^0$ is the Lagrangian multiplier of the inequality constraint $c_1$;
+		\item the sufficient conditions under which $\bs{\tau}_{\kappa}^0$ be an isolated local constrained minimum of Problem (2) are satisfied by $(\bs{\tau}^0_{\kappa}, \bs{\lambda}^{0})$, where $\bs{\lambda}^0 = (\lambda_1^0, \lambda_2^0, \lambda_3^0)^\itl $ of which $\lambda_2^0$ is the  Lagrangian multipliers for the  constraint $c_2$, and $\lambda_3$ for $c_3$. The sufficient conditions for optimality are
+		\begin{enumerate}
+			\item $\bs{\tau}_{\kappa}^0$ is feasible and the LICQ (Linear Independence Constraint Qualification) holds at $\bs{\tau}_{\kappa}^0$, i.e., the Jacobian matrix of active constraints at $\bs{\tau}_{\kappa}^0$, $J_{\mathcal{A}}(\bs{\tau}_{\kappa}^0)$, has full row rank;
+			\item $\bs{\tau}_{\kappa}^0$ is a KKT point and strict complementarity holds, i.e, the (necessarily unique) multiplier $\bs{\lambda}^0$ has the property that $\lambda_i^0 > 0$, for all $i  \in \mathcal{A}_{\mathcal{I}}(\bs{\tau}_{\kappa}^0)$, the set of indices of active inequality constraints at $\bs{\tau}_{\kappa}^0$;
+			\item for all nonzero vectors $\bs{p}$ satisfying $J_{\mathcal{A}}(\bs{\tau}_{\kappa}^0)\bs{p} = 0$, there exists $\omega > 0$ such that $\bs{p}^{\intercal}H(\bs{\tau}_{\kappa}^0, \bs{\lambda}^0) \bs{p} \ge \omega \|\bs{p}\|^2$., where $H(\bs{\tau}_{\kappa}^0, \bs{\lambda}^0) $ is the hessian of the Lagrangian at $\bs{\tau}_{\kappa}^0$ and $\bs{\lambda}^0$, where $\bs{\lambda}^0$ is the vector of the Lagrangian multipliers, $\bs{\lambda}^0 = (\lambda_1^0, \lambda_2^0, \lambda_3^0)^{\intercal}$.
+		\end{enumerate}
+		then there is a positive neighborhood about $\mu = 0$ for which a unique-isolated differentiable function $\bs{\tau}^*_{\kappa}(\mu)$ exists. It describes a unique isolated trajectory of local maxima of $S^*(\bs{\tau}, \mu)$, where $\bs{\tau}^*_{\kappa}(\mu) \to \bs{\tau}^0_{\kappa}$ as $\mu \to 0$.
+	\end{enumerate}
+\end{lemma}
+
+To find $\bs{\tau}^*_{\kappa}(\mu)$, we need to examine its stationarity. That is $\nabla S^*(\bs{\tau}, \mu) = 0$ is satisfied at $\bs{\tau}^*_{\kappa}(\mu)$. Its equivalent system of non-linear equations is
+\begin{align*}
+F^{\mu}(\bs{\tau}, \bs{\lambda}) =
+\begin{pmatrix} g(\bs{\tau}) - J(\bs{\tau}) \bs{\lambda} \\ c_1( \bs{\tau}) \lambda_1 - \mu \\ c_2(\bs{\tau}) + \mu \lambda_2\\ c_3(\bs{\tau}) + \mu \lambda_3 \end{pmatrix} = 0
+\end{align*}
+We also define $\chi_1 \triangleq \sfrac{\mu}{c_1(\bs{\tau})}$, $\chi_2 \triangleq - \sfrac{c_2(\bs{\tau})}{\mu}$ and $\chi_3 \triangleq - \sfrac{c_3(\bs{\tau})}{\mu}$ which can be considered as approximates of the Lagrangian multipliers under  $\mu$-perturbed KKT conditions. \\
+
+\begin{comment}
+Is $d F - d \hat{F} = d(F - \hat{F})$ ??\\
+Note:
+convergence $\hat{\tau}_{\kappa}(\mu) \overset{p}{\to} \tau^*_{\kappa}(\mu) \to  \tau^0_{\kappa}(\mu)$
+\begin{flalign*}
+&  \hat{\mb{E}} Y(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  \\
+= & \int y \,d \wh{F}_{Y_d} (y) - \int y \,d F_{Y^*_d} (y) \\
+= &  \int y  \lt\{  \,d\wh{F}_{Y_d} (y) - \,d F_{Y^*_d} (y) \rt\}  \\
+% = & \int y  \lt\{ \wh{f}_{Y_d} (y) - f_{Y^*_d} (y) \rt\} \,dy
+\end{flalign*}
+If for any arbitrary $\bs{d}$, $d F_{Y^*_{\bs{d}}} (y) $ is a density and $d\wh{F}_{Y_{\bs{d}}}(y)$ is a uniformly consistent estimator; that is $\underset{y}{\sup} \mid d\wh{F}_{Y_d} (y) - d F_{Y^*_d} (y) \mid =o_p(1)$, then
+
+\begin{flalign*}
+&  \hat{\mb{E}} Y(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  \\
+= & \int y \,d \wh{F}_{Y_d} (y) - \int y \,d F_{Y^*_d} (y) \\
+= &  \int y  \lt\{  \,d\wh{F}_{Y_d} (y) - \,d F_{Y^*_d} (y) \rt\}  \\
+\le & \int \mid y \mid \, dy  \cdot o_p(1) \\
+% = & \int y  \lt\{ \wh{f}_{Y_d} (y) - f_{Y^*_d} (y) \rt\} \,dy\\
+= &  \iint  F_{\varepsilon_Y}\lt[ y - m(\bs{h}_2) - \tsgn\lt\{r_2(\bs{h}_2; \bs{\tau}_2)\rt\}c_Y(\bs{h}_2) \rt] \,d G_{Y}\lt\{ m_Y, c_Y, r_2 \rvert \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1)
+\end{flalign*}
+
+\textbf{Reference}\\
+
+\textbf{Convergence in Distribution}\\
+Suppose that $(X_1, X_2, \dots)$ and $X$ are real-valued random variables with distribution functions $(F_1, F_2,  \dots)$ and $F$, respectively. We say that the distribution of $X_n$ converges to the distribution of $X$ as $n \to \infty$ if
+$$F_n(x) \to F(x), \text{as } n \to \infty$$
+for all $x$ at which $F$ is continuous. \\
+% Link https://www.probabilitycourse.com/chapter7/7_2_4_convergence_in_distribution.php
+
+\textbf{Lebesgue's Dominated Convergence Theorem}\\
+If for some random variable $Z$, $| X_n | \le | Z |$ for all $n$ and $\mb{E} | Z | \le \infty$, then $X_n \overset{d}{\to} X$ implies that $\mb{E} X_n \to \mb{E} X$.
+
+\end{comment}
+
+
+% modeling conditional distributions
+
+
+
+	\textbf{Modeling for and estimation of the distributions of potential outcomes}\\
+	Under the conditions of Lemma 1, we can solve Problem (2) under a sequence of $\mu$ converging to zero, and the solution $\underset{\mu \to 0}{\lim} \bs{\tau}_{\kappa}^*(\mu) = \bs{\tau}_{\kappa}^0$. However, as the distribution of potential outcomes are unknown, the two major quantities under an arbitrary regime $\bs{d}$ involved, $\mb{E}Y^*(\bs{d})$ and $\mb{E}Z^*(\bs{d})$, need to be estimated from the observed data. Our strategy for estimating these two quantities is to model the marginal distribution of each potential outcome, and then draw Monte-Carlo random samples from the estimated marginal distributions to calculate their expectations numerically.\\
+
+
+	To connect  observed data with potential outcomes, three necessary causal inference assumptions are needed. \\
+	\begin{enumerate}
+		\item Consistency: $Y = Y^*(A_1, A_2)$.
+		\item Sequential ignorability: $A_t  \indep W^*  | \bs{H}_{t}$ for $t =1 ,2$.
+		\item Positivity: $\exists \epsilon > 0$ for which $\epsilon < \text{Pr}(A_t = a_t \mid \bs{H}_t) < 1 - \epsilon$ with probabilty one for all $a_t$, $t=1, 2$.
+	\end{enumerate}
+	Following the G-computation formula by Robins etc.~\cite{Gill2001}, we have, for any arbitrary regime $\bs{d} = (d_1, d_2) $, that
+	\begin{flalign*}
+	\text{Pr}\{ Y^*(\bs{d}) \le y\} = \mb{E}_{\bs{X}_1} \lt\{ \mb{E}_{\bs{X}_2}\lt[  \text{Pr}\lt\{Y \le y \mid \bs{X}_2 , A_2 = d_2(\bs{X}_2), \bs{X}_1 , A_1 = d_1(\bs{X}_1)\rt\}  \mid \bs{X}_1, A_1 = d_1(\bs{X}_1) \rt] \rt\}
+	\end{flalign*}
+
+	%\begin{equation*}	\
+	%\text{Pr}\{ Y^*(\bs{d}) > y\} =\mb{E} \left[ \underset{a_1}{\sum} \mathds{1}_{a_1 = d_1(\bs{H}_1)} \mb{E}\left\{ \underset{a_2}{\sum} \mathds{1}_{a_2 = d_2(\bs{H}_2)} \text{Pr} (Y > y \rvert \bs{X}_1 = \bs{x}_1, A_1 = a_1, \bs{X}_2 = \bs{x}_2, A_2=a_2)  \mid \bs{X}_1, A_1 = a_1\right\}\right],
+	%\end{equation*}
+	and similarly,
+	\begin{flalign*}
+	\text{Pr}\{ Z^*(\bs{d}) \le z\} =  \mb{E}_{\bs{X}_1} \lt\{ \mb{E}_{\bs{X}_2}\lt[  \text{Pr}\lt\{Z \le z \mid \bs{X}_2 , A_2 = d_2(\bs{X}_2), \bs{X}_1 , A_1 = d_1(\bs{X}_1)\rt\}  \mid \bs{X}_1, A_1 = d_1(\bs{X}_1) \rt] \rt\}
+	\end{flalign*}
+
+	%	\begin{gather*}
+	%	\begin{flalign*}
+	%	& \text{Pr}\{ Z^*(\bs{d}) > z\} =\\
+	%	& \mb{E} \left[ \underset{a_1}{\sum} \mathds{1}_{a_1 = d_1(\bs{H}_1)} \mb{E}\left\{ \underset{a_2}{\sum} \mathds{1}_{a_2 = d_2(\bs{H}_2)} \text{Pr} (Z > z \rvert \bs{X}_1 = \bs{x}_1, A_1 = a_1, \bs{X}_2 = \bs{x}_2, A_2=a_2) \rvert \bs{X}_1, A_1 = a_1\right\}\right].
+	%	\end{flalign*}
+	%	\end{gather*}
+
+	%\begin{flalign*}
+	%& \text{Pr}\{ Y^*(\bs{d}) > y\} =\\
+	%& \mb{E} \left[ \underset{a_1}{\sum} \mathds{1}_{a_1 = d_1(\bs{H}_1)} \mb{E}\left\{ \underset{a_2}{\sum} \mathds{1}_{a_2 = d_2(\bs{H}_2)} \text{Pr} (Y > y \rvert \bs{H}_2, A_2)  \mid \bs{H}_1, A_1 \right\}\right],
+	%\end{flalign*}
+
+	%\marginnote{\small{Review G-computation!}}[-1.5cm]
+	%\begin{flalign*}
+	%& \text{Pr}\{ Z^*(\bs{d}) > z\} =\\
+	%& \mb{E} \left[ \underset{a_1}{\sum} \mathds{1}_{a_1 = d_1(\bs{H}_1)} \mb{E}\left\{ \underset{a_2}{\sum} \mathds{1}_{a_2 = d_2(\bs{H}_2)} \text{Pr} (Z > z \rvert \bs{H}_2 , A_2 ) \mid \bs{H}_1 , A_1 \right\}\right].
+	%\end{flalign*}
+
+	Hence, we can estimate the probabilty function of the potential outcomes under a regime $\bs{d}$, $\text{Pr}\{ Y^*(\bs{d}) \le y\}$ and $\text{Pr}\{ Z^*(\bs{d}) \le z\}$  , using observed data by modeling and estimating the conditional distributions involved, and hence, $\mb{E}Y^*(\bs{d})$ and $\mb{E}Z^*(\bs{d})$.\\
+
+For now, we follow the modeling tactic in Interactive Q-learning for Quantiles by Linn et al. We assume the following model,
+\begin{flalign*}
+& Y  = \mb{E}(Y \rvert \bs{H}_2, A_2)  + \varepsilon_Y,  \\
+& \mb{E}(Y \rvert \bs{H}_2, A_2)  = m_Y(\bs{H}_2) + A_2 c_Y(\bs{H}_2), \\
+& \text{where } \mb{E}(\varepsilon_Y) = 0, \text{Var}(\varepsilon_Y) = \sigma^2, \text{and } \varepsilon_Y \indep (\bs{H}_2, A_2).
+\end{flalign*}
+
+Define $F_{\varepsilon_Y}(\cdot)$ to be the distribution of $\varepsilon_Y$; $F_{\bs{H}_2 \rvert \bs{H}_1, A_1}(\cdot \mid \bs{h}_1, a_1)$ to be the conditional distribution of $\bs{H}_2$ given $\bs{H}_1 = \bs{h}_1$ and $A_1 = a_1$; $F_{\bs{H}_1}(\cdot)$ to be the distribution of $\bs{H}_1$. Again, we have $\bs{H}_1^\itl = (1, \bs{X}^\itl_1)$, $d_1(\bs{H}_1)$, $\bs{H}_2 = \{ \bs{H}^\itl_1, d_1(\bs{H}_1), \bs{X}^\itl_2\}^\itl$. \\
+%	Let $J^{d_1, d_2}(\bs{h}_1, \bs{h}_2, y) = F_{\varepsilon_Y}\{ y - m(\bs{h_2}^{d_1(\bs{h_1})}) - d_2(\bs{h}_2^{d_1(\bs{h}_1)})c_Y(\bs{h}_2^{d_1(\bs{h}_1)}) \}$, then
+\begin{flalign*}
+& \text{Pr}^{\bs{d}}\lt\{ Y \le y \mid \bs{H}_2 =\bs{h}_2, d_2(\bs{H}_2) =d_2(\bs{h}_2) \rt\} \\
+= & \text{Pr}^{\bs{d}}\lt\{ m(\bs{H}_2 )+ d_2( \bs{H}_2)c_Y(\bs{H}_2) + \varepsilon_Y \le y \mid \bs{H}_2 =\bs{h}_2, d_2(\bs{H}_2) =d_2(\bs{h}_2)  \rt\} \\
+= & \text{Pr}^{\bs{d}}\lt\{ \varepsilon_Y \le y - m(\bs{H}_2) - d_2( \bs{H}_2)c_Y(\bs{H}_2) \mid \bs{H}_2 =\bs{h}_2, d_2(\bs{H}_2) =d_2(\bs{h}_2) \rt\}\\
+=&  F_{\varepsilon_Y}\lt\{ y - m(\bs{h}_2) - d_2(\bs{h}_2)c_Y(\bs{h}_2) \rt\}\\
+= &  F_{\varepsilon_Y}\lt[ y - m(\bs{h}_2) - \tsgn\lt\{r_2(\bs{h}_2; \bs{\tau}_2)\rt\}c_Y(\bs{h}_2) \rt]
+\end{flalign*}
+Hence, we have
+\begin{flalign*}
+& \text{Pr}\lt\{ Y^*({\bs{d}}) \le y  \rt\} \\
+= &  \iint \text{Pr}^{\bs{d}}\lt\{ Y \le y \mid  \bs{H}_2=\bs{h}_2, d_2(\bs{H}_2)= d_2(\bs{h}_2) \rt\} \,d F_{\bs{H}_2 \mid \bs{H}_1, A_1}\lt\{ \bs{h}_2 \rvert d_1(\bs{\bs{h}_1}), \bs{h}_1 \rt\} \,d F_{\bs{H}_1}(\bs{h}_1)\\
+= &  \iint  F_{\varepsilon_Y}\lt\{ y - m(\bs{h}_2) - d_2(\bs{h}_2)c_Y(\bs{h}_2) \rt\} \,d F_{\bs{H}_2 \mid  \bs{H}_1, A_1}\lt\{ \bs{h}_2 \mid \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1)\\
+% = & \iint  F_{\varepsilon_Y}\lt\{ y - m_Y(\bs{h}_2) - d_2(\bs{h}_2)c_Y(\bs{h}_2) \rt\} \,d G_{Y}\lt\{ m_Y, c_Y \rvert \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1) \\
+= &  \iint  F_{\varepsilon_Y}\lt[ y - m(\bs{h}_2) - \tsgn\lt\{r_2(\bs{h}_2; \bs{\tau}_2)\rt\}c_Y(\bs{h}_2) \rt] \,d G_{Y}\lt\{ m_Y, c_Y, r_2 \rvert \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1) \\
+= &  \iint  F_{\varepsilon_Y}\lt[ y - m(\bs{h}_2) - \tsgn(r_2)c_Y(\bs{h}_2) \rt] \,d G_{Y}\lt\{ m_Y, c_Y, r_2 \rvert \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1)
+\end{flalign*}
+where $G_{Y}\lt\{ m_Y , c_Y, r_2\mid \bs{h}_1, a_1 \rt\}$ is the joint conditional distribution of $m_Y\lt(\bs{H}_2\rt)$, $c_Y\lt(\bs{H}_2\rt)$ and $r_2(\bs{H}_2; \bs{\tau}_2)$ given $\bs{H}_1 = \bs{h}_1$ and $A_1 = a_1$. The second equality is due to  $\int z(x, y) \,d F_{X | Y}(x | y) = \mb{E}(z | y) = \int z\,d F_{Z | Y}(z | y).$\\
+w
+Same applies to $Z$:
+\begin{flalign*}
+& Z  = \mb{E}(Z \rvert \bs{H}_2, A_2)  + \epsilon, \\
+& \text{where } \mb{E}(\epsilon) = 0, \text{Var}(\epsilon) = \sigma^2, \text{and } \epsilon \indep (\bs{H}_2, A_2) \\
+& \mb{E}(Z \rvert \bs{H}_2, A_2)  = m_Z(\bs{H}_2) + A_2 c_Z(\bs{H}_2)
+\end{flalign*}
+\begin{flalign*}
+& \text{Pr}\lt\{ Z^*({\bs{d}}) \le z  \rt\} \\
+= &  \iint \text{Pr}^{\bs{d}}\lt\{ Z \le z \mid  \bs{H}_2=\bs{h}_2, d_2(\bs{H}_2)= d_2(\bs{h}_2) \rt\} \,d F_{\bs{H}_2 \mid \bs{H}_1, A_1}\lt\{ \bs{h}_2 \rvert d_1(\bs{\bs{h}_1}), \bs{h}_1 \rt\} \,d F_{\bs{H}_1}(\bs{h}_1)\\
+= &  \iint  F_{\varepsilon_Z}\lt\{ z - m(\bs{h}_2) - d_2(\bs{h}_2)c_Z(\bs{h}_2) \rt\} \,d F_{\bs{H}_2 \mid  \bs{H}_1, A_1}\lt\{ \bs{h}_2 \mid \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1)\\
+% = & \iint  F_{\varepsilon_Z}\lt\{ z - m_Z(\bs{h}_2) - d_2(\bs{h}_2)c_Z(\bs{h}_2) \rt\} \,d G_{Z}\lt\{ m_Z, c_Z \rvert \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1) \\
+= &  \iint  F_{\varepsilon_Z}\lt[ z - m(\bs{h}_2) - \tsgn\lt\{r_2(\bs{h}_2; \bs{\tau}_2)\rt\}c_Z(\bs{h}_2) \rt] \,d G_{Z}\lt\{ m_Z, c_Z, r_2 \rvert \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1) \\
+= &  \iint  F_{\varepsilon_Z}\lt[ z - m(\bs{h}_2) - \tsgn(r_2)c_Z(\bs{h}_2) \rt] \,d G_{Z}\lt\{ m_Z, c_Z, r_2 \rvert \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1)
+\end{flalign*}
+
+where $G_{Z}\lt\{ m_Z, c_Z, r_2 \mid \bs{h}_1, a_1 \rt\}$ is the joint conditional distribution of $m_Z\lt(\bs{H}_2\rt)$, $c_Z\lt(\bs{H}_2\rt)$ and $r_2(\bs{H}_2; \bs{\tau}_2)$ given $\bs{H}_1 = \bs{h}_1$ and $A_1 = a_1$. \\
+
+Details of estimation and modeling follows ``Estimation of dynamic treatment regimes for complex outcomes: Balancing benefits and risks" by Linn et al.\\
+
+\textbf{Estimation of the barrier trajectory} \\
+Once we have the estimators of $\mb{E}Y^*(\bs{\tau})$ and $\mb{E}Z^*(\bs{\tau})$, denoted by $\wh{\mb{E}}Y_n(\bs{\tau})$ and $\wh{\mb{E}}Z_n(\bs{\tau})$, we plug  those estimators into Problem (2), and get Problem (3) as
+\begin{equation}
+\underset{\bs{\tau}}{\max }\,\, \wh{\mb{E}} Y_n(\bs{\tau}) + \mu \txt{log} \lt\{ \kappa - \wh{\mb{E}} Z_n(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\}
+\end{equation}
+ Denote a solution to Problem (3) by $\wh{\bs{\tau}}_{\kappa}(\mu) = (\wh{\bs{\tau}}^\itl_{\kappa,\mu,1} , \wh{\bs{\tau}}_{\kappa,\mu,2}^\itl )^\itl$, and $\widehat{S}(\bs{\tau}, \mu) = \wh{\mb{E}} Y_n(\bs{\tau}) + \mu \, \txt{log} \lt\{ \kappa - \wh{\mb{E}}Z_n(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\}.$ The following figure is an replication of the simulation result in the ``Estimation of dynamic treatment regimes for complex outcomes" chapter.\\
+
+
+\begin{overpic}[width=0.90\textwidth]{test7}
+	\put (0, 57) {$\wh{\mb{E} }Y_n(\wh{\bs{\tau}}_{\kappa,\mu})$}
+	\put (0, 27) {$\wh{\mb{E} }Z_n(\wh{\bs{\tau}}_{\kappa,\mu})$}
+	\put (50, 2.5) {$\kappa$}
+\end{overpic}
+%\includegraphics{test7}
+
+The red bars are  the estimated means of $Y$ under the  estimated constrained optimal regimes vs. constraint value $\kappa$. The blue bars are  the estimated means of $Z$ under the estimated constrained optimal regime vs. constrain value $\kappa$. The red dash line is the estimated maximal of $Y$ without constraint, and the blue dash line is the estimated minimal of $Z$ without constraint. For the constrained problems, Matlab fmincon  solver is used with `Algorithm' option set to `interior-point' method, and `FinDiffRelStep' to 1e-2.  For unconstrained problems, Matlab fminunc solver is used,where `Algorithm' options is set to `quasi-newton', and `FinDiffRelStep' to 1e-2. MultiStart function is called for 5 random starts, where `StartPointsToRun' option is set to `all'.
+% modeling conditional distributions
+
+
+\textbf{ Convergence in probabilty of the estimator  to $\hat{\bs{\tau}}_{\kappa}(\mu)$ to  the penalty-barrier trajectory  $\bs{\tau}^*_{\kappa}(\mu)$} \\
+Here, we examine the consistency of $\widehat{\bs{\tau}}_{\kappa}(\mu)$  to $\bs{\tau}^*_{\kappa}(\mu)$, and the following lemmas are needed. As $S^*(\bs{\tau}, \mu) = \mb{E} Y^*(\bs{\tau}) + \mu \txt{log} \lt\{ \kappa - \mb{E} Z^*(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\},$ and $\widehat{S}(\bs{\tau}, \mu) = \wh{\mb{E}} Y_n(\bs{\tau}) + \mu \, \txt{log} \lt\{ \kappa - \wh{\mb{E}}Z_n(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\},$ then
+$$\widehat{S}(\bs{\tau}, \mu) - S^*(\bs{\tau}, \mu) = \wh{\mb{E}} Y_n(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  + \mu \, \txt{log}\frac{ \kappa - \wh{\mb{E}}Z_n(\bs{\tau})}{ \kappa - \mb{E} Z^*(\bs{\tau})}$$
+For notation simplicity, we denote $Pr\lt\{ Y^*\lt(\bs{d}\rt) \le y \rt\} = F_{ Y^*(\bs{\tau})}(y)$ and $Pr\lt\{ Z^*\lt(\bs{d}\rt) \le z \rt\} = F_{ Z^*(\bs{\tau})}(z)$. Their estimators are denoted by $\wh{Pr}\lt\{ Y_n\lt(\bs{d}\rt) \le y \rt\} = \wh{F}_{ Y_n(\bs{\tau})}(y)$ and  $\wh{Pr}\lt\{ Z_n\lt(\bs{d}\rt) \le z \rt\} = \wh{F}_{ Z_n(\bs{\tau})}(z)$ . Also, $Y^*(\bs{\tau})$ denotes the random variable with the cumulative distribution function $F_{ Y^*(\bs{\tau})}(y)$, and  $Y_n(\bs{\tau})$ denotes the random variable with the cumulative distribution function $\wh{F}_{ Y_n(\bs{\tau})}(y)$. Same applies to $Z^*(\bs{\tau})$ and  $Z_n(\bs{\tau})$.
+\begin{lemma}
+For any fixed $\bs{\tau}: \bs{\tau}_1^\itl\bs{\tau}_1 - 1 = 0$, and $\bs{\tau}_2^\itl\bs{\tau}_2 -1 = 0$. We assume that, for each $\bs{\tau}$,
+\begin{enumerate}
+\item $Y_n(\bs{\tau}) \overset{d}{\to} Y^*(\bs{\tau})$, i.e., $\nlim \wh{F}_{Y_n({\bs{\tau}})}(y) = F_{Y^*({\bs{\tau}})}(y)$, for all $y$ at which $F_{Y^*(\bs{\tau})}(y)$ is continuous;
+\item If there exists some random variable $T$, such that  $|Y_n(\bs{\tau})| \le |T|$ for all $n$ and $\mb{E} |T| \le \infty$,
+\end{enumerate}
+Also, we assume the same assumptions for $Z({\bs{\tau}})$.
+Then, we have\\
+\begin{flalign*}
+\underset{\bs{\tau}:\bs{\tau}_1^\itl \bs{\tau}_1=1, \bs{\tau}_2^\itl \bs{\tau}_2=1}{\sup}\left|\widehat{S}_{\kappa}(\bs{\tau}, \mu)-S^*_{\kappa}(\bs{\tau},  \mu)\right|=o_{p}(1).
+\end{flalign*}
+\end{lemma}
+\begin{proof}
+For any fixed $\bs{\tau}: \bs{\tau}_1^\itl\bs{\tau}_1 = 1$ and $\bs{\tau}_2^\itl\bs{\tau}_2 = 1$, we have
+\begin{flalign*}
+& \widehat{S}_{\kappa}(\bs{\tau}, \mu)-S_{\kappa}^{*}(\bs{\tau}, \mu)\\
+= &\, \wh{\mb{E}} Y_n(\bs{\tau}) - \mb{E} Y^*(\bs{\tau}) + \mu \txt{log} \lt\{ \frac{ \kappa - \wh{\mb{E}} Z(\bs{\tau}) }{ \kappa - \mb{E} Z^*(\bs{\tau}) }\rt\}\\
+= &\, \int y \,d \wh{F}_{Y(\bs{\tau})}(y)- \int y \,d F_{Y^*(\bs{\tau})}(y)+ \mu \txt{log} \lt\{ \frac{ \kappa - \int z \,d \wh{F}_{Z_n(\bs{\tau})}(z)}{ \kappa - \int z \,d F_{Z^*(\bs{\tau})}(z) }\rt\}
+\end{flalign*}
+
+For $\wh{\mb{E}} Y_n(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})$, we have $Y_n(\bs{\tau}) \sim \wh{F}_{Y_n(\bs{\tau})}(y)$, and $Y^*(\bs{\tau}) \sim F_{Y^*(\bs{\tau})}(y)$. Under the assumptions 1 and 2, %if $Y_n(\bs{\tau}) \overset{d}{\to} Y^*(\bs{\tau})$, aka, $\wh{F}_{Y_n(\bs{\tau})}(y) \to F_{Y^*(\bs{\tau})}(y), \text{as } n \to \infty$, for all $y$ at which $F_{Y^*(\bs{\tau})}(y)$ is continuous. Also,  for each $\bs{\tau}$, if there exists some random variable $T$, such that  $|Y_n(\bs{\tau})| \le |T|$ for all $n$ and $\mb{E} |T| \le \infty$,
+by dominated convergence theorem, we have
+%$\wh{\mb{E}} Y_n(\bs{\tau}) - \mb{E} Y^*(\bs{\tau}) = o_p(1)$ ,
+we have $\underset{n \to \infty}{\lim}\wh{\mb{E}} Y_n(\bs{\tau}) = \mb{E} Y^*(\bs{\tau})$. Similarily, we have  $\underset{n \to \infty}{\lim}\wh{\mb{E}} Z_n(\bs{\tau}) = \mb{E} Z^*(\bs{\tau})$.  The two terms embedded in log operator are forced to be strictly greater than zero.  Together with continuous mapping theorem, we have
+\begin{flalign*}
+\widehat{S}_{\kappa}(\bs{\tau}, \mu)-S_{\kappa}(\bs{\tau}, \mu) =o_p(1).
+\end{flalign*}
+As this holds for any fixed value of $\bs{\tau}$ and constants $\mu$ sufficiently small, we have
+$$\underset{\bs{\tau}:\bs{\tau}_1^\itl \bs{\tau}_1=1, \bs{\tau}_2^\itl \bs{\tau}_2=1}{\sup}\left|\widehat{S}_{\kappa}(\bs{\tau}, \mu)-S^*_{\kappa}(\bs{\tau},  \mu)\right|=o_{p}(1)$$.
+\end{proof}
+
+Now, we examine the consistency of $\widehat{\bs{\tau}}_{\kappa}(\mu)$ in the following corollary.
+\begin{corollary}
+For any sufficiently small $\mu$, suppose all the assumptions in Lemma 2 hold, and we also make the following assumptions,
+\begin{enumerate}
+\item $\widehat{S}_{\kappa}(\widehat{\bs{\tau}}_{\kappa,\mu} , \mu) \ge \underset{\bs{\tau}}\sup\, \widehat{S}_{\kappa}(\bs{\tau}, \mu) + o_p(1), \forall \bs{\tau} \neq \widehat{\bs{\tau}}_{\kappa,\mu},  \bs{\tau}_1^\itl \bs{\tau}_1=1$, and $\bs{\tau}_2^\itl \bs{\tau}_2=1$;
+\item $\forall \epsilon > 0, \exists \delta > 0,\text{ s.t. } S^{*}_{\kappa}(\bs{\tau}^*_{\kappa,\mu}, \mu) > S^{*}_{\kappa}(\bs{\tau}, \mu) + \delta, \forall \|\bs{\tau} - \bs{\tau}^*_{\kappa,\mu} \| \ge \epsilon$, $\bs{\tau}_1^\itl \bs{\tau}_1=1$, and $\bs{\tau}_2^\itl \bs{\tau}_2=1$.
+\end{enumerate}
+Then, we have that $\widehat{\bs{\tau}}_{\kappa}(\mu)$ is consistent in probability, i.e., $\widehat{\bs{\tau}}_{\kappa}(\mu) \overset{p}\to \bs{\tau}^*_{\kappa}(\mu)$.
+\end{corollary}
+
+Here, assumption 1 states that $\widehat{\bs{\tau}}_{\kappa}(\mu)$ is a maximizer of $\widehat{S}_{\kappa}(\bs{\tau},\mu)$.  Assumption 2 says that $S^*_{\kappa}(\bs{\tau},\mu)$ has a unique maximizer, $\bs{\tau}^*_{\kappa}(\mu)$.
+
+\begin{proof}
+We expand $S^{*}_{\kappa}(\bs{\tau}^*_{\kappa, \mu}, \mu) $ as,
+\begin{flalign*}
+S^{*}_{\kappa}(\bs{\tau}^*_{\kappa, \mu},  \mu) & = \widehat{S}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu},\mu) + \{S^{*}_{\kappa}(\bs{\tau}^*_{\kappa, \mu}, \mu) - \widehat{S}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu)\} \\
+& \le \widehat{S}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu},  \mu) + \{S^{*}_{\kappa}(\bs{\tau}^*_{\kappa, \mu},  \mu) - \widehat{S}_{\kappa}(\bs{\tau}^*_{\kappa, \mu}, \mu)\} \\
+& \le \widehat{S}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu},  \mu) + | S^{*}_{\kappa}(\bs{\tau}^*_{\kappa, \mu}, \mu) - \widehat{S}_{\kappa}(\bs{\tau}^*_{\kappa, \mu}, \mu)| \\
+& \le \widehat{S}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu) + \sup_{\bs{\tau}} |S^{*}_{\kappa}(\bs{\tau}, \mu) - \widehat{S}_{\kappa}(\bs{\tau}, \mu)|\\
+& = S^{*}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu) + \{\widehat{S}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu) - S^{*}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu)\} + \sup_{\bs{\tau}} |S^{*}_{\kappa}(\bs{\tau}, \mu) - \widehat{S}_{\kappa}(\bs{\tau}, \mu)| \\
+& \le
+S^{*}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu) + |\widehat{S}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu) - S^{*}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu)| + \sup_{\bs{\tau}} |S^{*}_{\kappa}(\bs{\tau}, \mu) - \widehat{S}_{\kappa}(\bs{\tau}, \mu)|\\
+& \le S^{*}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu)  + 2 \sup_{\bs{\tau}} |S^{*}_{\kappa}(\bs{\tau}, \mu) - \widehat{S}_{\kappa}(\bs{\tau}, \mu)| ,
+\end{flalign*}
+where for any $\bs{\tau}$, we have $\bs{\tau}_1^\itl \bs{\tau}_1 = 1$, and $\bs{\tau}_2^\itl \bs{\tau}_2 = 1 $. Moreover, the first inequality holds by assumption 1 that states $\widehat{\bs{\tau}}_{\kappa}(\mu)$ as a maximizer of $\widehat{S}_{\kappa}(\bs{\tau},  \mu).$
+Then, by Lemma 2 above, we have,
+\begin{flalign*}
+S^{*}_{\kappa}(\bs{\tau}^*_{\kappa, \mu},  \mu) \le S^{*}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu) + o_p(1)
+\end{flalign*}
+Suppose $\widehat{\bs{\tau}}_{\kappa, \mu} \not\to \bs{\tau}^*_{\kappa, \mu}$. We take $\limsup$ on both sides, and get
+\begin{flalign*}
+\begin{aligned}
+S^{*}_{\kappa}(\bs{\tau}^*_{\kappa, \mu},  \mu) \le \underset{n \to \infty} {\limsup}\, S^{*}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu).
+\end{aligned}
+\end{flalign*}
+However, by assumption 2, we have
+\begin{flalign*}
+S^{*}_{\kappa}(\bs{\tau}^*_{\kappa, \mu}, \mu) > \limsup_{n \to \infty}S^{*}_{\kappa}(\widehat{\bs{\tau}}_{\kappa, \mu}, \mu),
+\end{flalign*}
+because $\bs{\tau}^*_{\kappa,\mu}$ is supposed to by the unique maximizer of $S^{*}_{\kappa}(\bs{\tau}^*_{\kappa, \mu}, \mu)$.
+% ie., $G^{*}_{\kappa}(\tau^{*}_{\kappa}) \le G^{*}_{\kappa}(\widehat{\tau}_{n,\kappa})\text{, infinitely many}$\\
+These are contradictory. Therefore, it has to be that
+\begin{flalign*}
+\widehat{\bs{\tau}}_{\kappa}(\mu) \overset{p}{\to} \bs{\tau}^*_{\kappa}(\mu), \text{ as } n \to \infty.
+\end{flalign*}
+\end{proof}
+% asymptotics for estimated indexing parm
+
+
+\textbf{Limiting distribution of $\wh{\bs{\tau}}$}\\
+Before we derive the limiting distribution of the estimator $\wh{\bs{\tau}}_{\kappa,\mu}$, we need to examine, for any fixed value of $\bs{\tau}: \bs{\tau}_1^\itl\bs{\tau}_1 = 1$ and $\bs{\tau}_2^\itl\bs{\tau}_2 = 1$, the limiting distribution of $\nabla \wh{\mb{E}} Y_n(\bs{\tau})$.
+\begin{flalign*}
+\nabla \wh{\mb{E}} Y_n(\bs{\tau}) = &\pard[\bs{\tau}] \int y \,d \wh{F}_{Y_n(\bs{\tau})}(y) \\
+= &\pard[\bs{\tau}] \int y \,d \lt[ \mean[n] \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt] \\
+= & \mean[n] \pard[\bs{\tau}] \int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})
+\end{flalign*}
+%\begin{gather}
+%\begin{flalign*}
+%\nabla_{\bs{\tau}}\wh{\mathbb{E}}\lt\{ \text{sgn}\lt(\bs{X}^{\intercal}\bs{\tau}\rt)\bs{X}_1^{\intercal}\bs{\beta}_{Y1}\rt\} =\nabla_{\bs{\tau}}\lt[\frac{1}{n}\sum_{i=1}^{n}\bs{X}_{i,1}^{\intercal}\bs{\beta}_{Y1}\lt\{ 1-2K\lt(-\frac{\bs{X}^{\intercal}_{i}\bs{\tau}}{h}\rt)\rt\} \rt]=\frac{1}{n}\sum_{i=1}^{n}\frac{2\bs{X}_{i,1}^{\intercal}\bs{\beta}_{Y1}}{h}k\lt(-\frac{\bs{X}_{i}^{\intercal}\bs{\tau}}{h}\rt)\bs{X}_{i}.
+%\end{flalign*}
+%\end{gather}
+
+\begin{lemma}
+In addition to the assumptions in corollary 1, we also suppose the following conditions hold.
+\begin{enumerate}
+\item $\bs{H}_1^{\intercal}\bs{\tau}_1$  and $\bs{H}_2^{\intercal}\bs{\tau}_2$ are both bounded away from 0.
+\item $\forall \bs{a} \in \mathbb{R}^p$,$\exists \delta > 0$ ,such that
+\begin{enumerate}
+\item $\mathbb{E}\lt|\bs{a}^\itl\pard[\bs{\tau}] \int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt|^{2+\delta} < \infty$
+\item $ \lt\{\bs{\bs{a}^{\intercal}}V\lt[\pard[\bs{\tau}] \int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt]\bs{a} \rt\}^{1+\frac{\delta}{2}}< \infty$.
+\end{enumerate}
+\end{enumerate}
+Then, we have, for any fixed $\bs{\tau}$ and $\bs{\beta}_{Y1}$,
+\begin{gather}
+\begin{flalign*}
+\sqrt{n}\lt[\nabla \wh{\mb{E}} Y_n(\bs{\tau})  -\mathbb{E}\lt(\nabla \wh{\mb{E}} Y_n(\bs{\tau})\rt)\rt]\overset{d}{\to}\mathcal{N}\lt(0,AV\lt[\pard[\bs{\tau}] \int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt]\rt)
+\end{flalign*}
+\end{gather}
+\end{lemma}
+
+The proof of this is similar to the proof of Lemma 1 in the one-stage problem.
+%\subsection{Limiting distribution of $\nabla_{\bs{\tau}}\wh{\mathbb{E}}\lt\{ \text{sgn}\lt(\bs{X}^{\intercal}\bs{\tau}\rt)\bs{X}_1^{\intercal}\bs{\beta}_{Y1}\rt\} $}
+
+%Comment: Goal is to prove the derivative above is asymptotically normal.
+%Considering that it includes sample size $n$ in $h$, and it is multivariate.
+%Try Lyapunov condition and cramer-wold theorem first.
+%
+%The sequences here are a triangular array, and are iid for each $n$.
+%
+%$k$ is the kernel of our choice, gaussian kernel.
+
+\begin{proof}
+For any  $\bs{a} \in \mathbb{R}^p$, we let $W_{ni} = \bs{a}^\itl \pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$. For each value of $n$, $w_{n1},w_{n2},\cdots,w_{nn}$ are i.i.d, and functions of the sample size $n$. This is because that $\bs{X}_{i}$ are assumed to be i.i.d., and $h$ is a function of sample
+size $n$. Then, we have
+\begin{gather*}
+\mu_{n}:=\mathbb{E}W_{ni}=\mathbb{E}\lt[\bs{a}^\itl \pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt],
+\end{gather*}
+and
+\begin{gather*}
+\sigma_{n}^{2}:=V(W_{ni})=\bs{a}^\itl V\lt[\pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt]\bs{a}
+\end{gather*}
+
+%?????????????????????????????????????????????????????????? \\
+%??? Delta method and Taylor expansion for approximation ??? \\
+%?????????????????????????????????????????????????????????? \\
+We let $G_{ni}=W_{ni}-\mu_{\ensuremath{n}}$, and $T_{n}=\sum_{i=1}^{n}G_{ni}$. Also, we let $s_{n}^{2}=V(T_{n})=\sum_{i=1}^{n}V(G_{ni})=\sum_{i=1}^{n}\sigma_{n}^{2}=n\sigma_{n}^{2}$, where the second equality is because of independence, and the last equality is due to identicalness. Therefore, $\sfrac{T_{n}}{s_{n}}$ has mean 0, and variance 1.  If we can show $G_{ni}$ satisfying the Lyapunov condition, then
+we have
+
+$$\frac{T_{n}}{s_{n}}\overset{d}{\to}\mathcal{N}(0,1),\text{ as } n \to \infty$$,
+
+
+
+Now, we check the Lyapunov condition, that is, ~\cite{Lindsay1995,Hunter2014}
+\begin{gather*}
+\exists\delta>0, \text{ such that } \frac{1}{s_{n}^{2+\delta}}\sum_{i=1}^{n}\mathbb{E}\mid G_{n,i}\mid^{2+\delta}\to0, \text{ as } n\to0.
+\end{gather*}
+We define, for any $\bs{a}$,
+\begin{gather*}
+C_1 \triangleq \mathbb{E}\lt|G_{ni}\rt|^{2+\delta}=\mathbb{E}\lt|W_{ni}-\mu_{\ensuremath{n}}\rt|^{2+\delta}=\mathbb{E}\lt|\bs{a}^\itl \pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})-\mu_{n}\rt|^{2+\delta},
+\end{gather*}
+and
+\begin{gather*}
+C_2 \triangleq s_{n}^{2+\delta}=n^{1+\frac{\delta}{2}}\sigma_{n}^{2+\delta}=n^{1+\frac{\delta}{2}}\lt\{ \bs{a}^\itl  V \lt[ \pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt] \bs{a} \rt\} ^{1+\frac{\delta}{2}}.
+\end{gather*}
+Then, we have
+\begin{flalign*}
+&\frac{1}{s_{n}^{2+\delta}}\sum_{i=1}^{n}\mathbb{E}\mid G_{n,i}\mid^{2+\delta}\\
+=&\frac{\mathbb{E}\lt|\bs{a}^\itl \pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})-\mu_{n}\rt|^{2+\delta}}{n^{\frac{\delta}{2}}\lt\{ \bs{a}^{\intercal}V\lt[\pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}\lt(y | \bs{H}_{1,i} = \bs{h}_{1,i}\rt) \rt]\bs{a}\rt\} ^{1+\frac{\delta}{2}}} \\
+=&\frac{C_{1}}{n^{\frac{\delta}{2}}C_{2}}.
+\end{flalign*}
+
+As long as $\delta>0$, for finite $C_1$ and finite $C_2$, we have $\sfrac{C_{1}}{n^{\frac{\delta}{2}}C_{2}}\to0$,
+as $n\to\infty$. This means that the Lyapunov condition is satisfied, if $\mathbb{E}\lt|G_{ni}\rt|^{2+\delta}$ and $s_{n}^{2+\delta}$ are finite. Then,  by Lyapunov Central Limit Theorem, we have
+\begin{gather*}
+\frac{T_{n}}{s_{n}}\overset{d}{\to}\mathcal{N}(0,1).
+\end{gather*}
+
+As this hold for any arbitary non-random vector $\bs{a}\in \mathbb{R}^p$, we have, by Cramer-Wold Theorem, that
+\begin{gather*}
+\sqrt{n}\lt[\mean[n] \pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) -\mathbb{E}\lt\{ \pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt\}\rt]\overset{d}{\to}\mathcal{N}\lt(0,V\lt[\pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt]\rt),
+\end{gather*}
+as $n \to \infty$. We denote $\bs{L}_{ni}= \pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$,
+then this is written as
+\begin{gather*}
+\sqrt{n}\lt[\frac{1}{n}\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}\rt]\overset{d}{\to}\mathcal{N}\lt(0,V\lt[\bs{L}_{n1}\rt]\rt).
+\end{gather*}
+Then, we have
+\begin{gather*}
+\frac{1/n\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}}{[V(\bs{L}_{n1})/n]^{1/2}}\frac{[V(\bs{L}_{n1})/n]^{1/2}}{\lt[AV(\bs{L}_{n1})/n\rt]^{1/2}}\overset{d}{\to}\mathcal{N}(0,1).
+\end{gather*}
+As  $n \to \infty$,
+\begin{gather*}
+\frac{V(\bs{L}_{n1})^{1/2}}{AV(\bs{L}_{n1})^{1/2}}\to1,
+\end{gather*}
+then we have
+\begin{gather*}
+\frac{1/n\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}}{[AV(\bs{L}_{n1})/n]^{1/2}}\overset{d}{\to}\mathcal{N}(0,1),
+\end{gather*}
+i.e.,
+\begin{gather*}
+\sqrt{n}\lt[1/n\sum_{i=1}^{n}\bs{L}_{ni}-\mathbb{E}\bs{L}_{n1}\rt]\overset{d}{\to}N\lt(0,AV(\bs{L}_{n1})\rt).
+\end{gather*}
+As $\frac{1}{n}\sum_{i=1}^{n}\bs{L}_{ni} =\mean[n] \pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) = \nabla \wh{\mb{E}} Y_n(\bs{\tau})$, we have
+\begin{gather}
+\begin{flalign*}
+\sqrt{n}\lt[\nabla \wh{\mb{E}} Y_n(\bs{\tau})  -\mathbb{E}\lt\{\nabla \wh{\mb{E}} Y_n(\bs{\tau})\rt\}\rt]\overset{d}{\to}\mathcal{N}\lt(0,AV\lt[\pard[\bs{\tau}] \int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt]\rt)
+\end{flalign*}
+\end{gather}
+\end{proof}
+Assume $\wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$, the following lemma shows that the estimations do not effect the limiting distribution obtained above.
+\begin{corollary}
+Suppose all the assumptions in Lemma 3  hold, and $\wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$ is a consistent estimator of ${F}_{Y^*(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$. Then, we have
+\begin{gather}
+\begin{flalign*}
+\sqrt{n}\lt[\nabla \wh{\mb{E}} Y_n(\bs{\tau})  - \nabla \mb{E}Y^*_n(\bs{\tau})\rt]\overset{d}{\to}\mathcal{N}\lt(0,AV\lt[\pard[\bs{\tau}] \int y \,d  F_{Y^*(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt]\rt)
+\end{flalign*}
+\end{gather}
+\end{corollary}
+\begin{proof}
+We write
+\begin{gather}
+\begin{flalign*}
+& \nabla \wh{\mb{E}} Y_n(\bs{\tau})  - \nabla \mb{E}Y^*(\bs{\tau}) \\
+= & \nabla \wh{\mb{E}} Y_n(\bs{\tau})  - \mb{E}\lt\{ \nabla \wh{\mb{E}}Y_n(\bs{\tau}) \rt\}  + \mb{E}\lt\{ \nabla \wh{\mb{E}}Y_n(\bs{\tau}) \rt\}\ - \nabla \mb{E}Y^*(\bs{\tau}),
+\end{flalign*}
+\end{gather}
+where $ \mb{E}\lt\{ \nabla \wh{\mb{E}}Y_n(\bs{\tau}) \rt\}\ - \nabla \mb{E}Y^*(\bs{\tau}) =  \mb{E}\lt\{\pard[\bs{\tau}]\int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})\rt\}  - \mb{E} \pard[\bs{\tau}]\int y \,d  F_{Y^*x(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) = o_p(1)$ is due to the consistency of $\wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$ and dominated convergence theorem.\\
+By lemma 1, we have
+\begin{gather}
+\begin{flalign*}
+\sqrt{n}\lt[\nabla \wh{\mb{E}} Y_n(\bs{\tau})  -\mathbb{E}\lt\{\nabla \wh{\mb{E}} Y_n(\bs{\tau})\rt\}\rt]\overset{d}{\to}\mathcal{N}\lt(0,AV\lt[\pard[\bs{\tau}] \int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt]\rt)
+\end{flalign*}
+\end{gather}
+
+As $\wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$ is consistent, we have
+\begin{gather*}
+\frac{AV\lt[\pard[\bs{\tau}] \int y \,d  \wh{F}_{Y_n(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt]}{AV\lt[\pard[\bs{\tau}] \int y \,d  F_{Y^*(\bs{\tau})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt]} \overset{p}{\to} 1.
+\end{gather*}
+Then, we have
+\begin{gather}
+\begin{flalign*}
+\sqrt{n}\lt[\nabla \wh{\mb{E}} Y_n(\bs{\tau})  - \nabla \mb{E}Y^*(\bs{\tau})\rt]\overset{d}{\to}\mathcal{N}\lt(0,AV\lt[\pard[\bs{\tau}] \int y \,d  F_{Y^*_n(\bs{\tau})}\lt(y | \bs{H}_{1,i} = \bs{h}_{1,i}\rt) \rt]\rt)
+\end{flalign*}
+\end{gather}
+\end{proof}
+
+
+\textbf{Limiting distribution of $\wh{\bs{\tau}}_{\kappa,\mu}$}\\
+Now, we investigate the limiting distribution of $\wh{\bs{\tau}}_{\kappa,\mu}$.
+
+\begin{theorem}
+Suppose all the assumptions above hold. Then we have, as $n\to \infty$
+\begin{flalign*}
+\sqrt{n}(\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}_{\kappa,\mu}^*) \overset{d}{\to} \mathcal{N}\lt(\bs{0}, \bs{\Sigma}^* \rt),
+\end{flalign*}
+where $\bs{\Sigma}^* = \bs{D}^{*-1}\bs{C}^{*}\bs{D}^{*-1}$,
+\begin{flalign*}
+\bs{C}^* :=
+AV\lt[\pard[\bs{\tau}] \int y \,d F_{Y^*(\bs{\tau})}(y | \bs{H}_{1} = \bs{h}_{1}) \rt],
+\end{flalign*}
+and
+\begin{gather*}
+\begin{flalign*}
+\bs{D}^*:= &\nabla^2 \mb{E} Y^*(\bs{\tau}^*_{\kappa,\mu}) - \mu \frac{\nabla^2 \mb{E} Z^*(\bs{\tau}^*_{\kappa,\mu}) \lt[ \kappa - \mb{E} Z^*(\bs{\tau}^*_{\kappa,\mu}) \rt] + \{ \nabla \mb{E} Z^*(\bs{\tau}^*_{\kappa,\mu}) \}^2}{  \lt\{\kappa - \mb{E} Z^*(\bs{\tau}^*_{\kappa,\mu}) \rt\}^2} \\
+= & \nabla^2 {S}^* (\bs{\tau}_{\kappa,\mu}^*, \mu).
+\end{flalign*}
+\end{gather*}
+\end{theorem}
+\begin{proof}
+
+Taylor expansion, for each $\mu$
+$$\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu},\mu) = \nabla\wh{S}(\wh{\bs{\tau}}_{\kappa,\mu},\mu) - \nabla^2\wh{S}(\tilde{\bs{\tau}}_{\kappa,\mu}, \mu) (\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}^*_{\kappa,\mu} ),$$
+where $\tilde{\bs{\tau}}_{\kappa,\mu}$ is a vector in between $\wh{\bs{\tau}}_{\kappa,\mu}$ and $\bs{\tau}^*_{\kappa,\mu}$.
+As $\wh{\bs{\tau}}_{\kappa}(\mu)$ is the maximizer of $\wh{S}(\bs{\tau}, \mu)$, it satisfies the first order conditions such that $\nabla\wh{S}(\wh{\bs{\tau}}_{\kappa,\mu},\mu) = 0$. Then,
+\begin{flalign*}
+& \sqrt{n}\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu},\mu) =  -\sqrt{n} \nabla^2\wh{S}(\tilde{\bs{\tau}}_{\kappa,\mu},\mu ) (\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}^*_{\kappa,\mu} )\\
+& \nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu},\mu) = \nabla \wh{\mb{E}} Y_n(\bs{\tau}^*_{\kappa,\mu}) - \mu \frac{\nabla \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu})}{  \kappa - \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) } + + \frac{2}{\mu}\,(\bs{\tau}_{\kappa,\mu}^{*\intercal}\bs{\tau}^*_{\kappa,\mu}-1)\bs{\tau}^*_{\kappa,\mu},
+\txt{where }\bs{\tau}_{\kappa,\mu}^{*\itl}\bs{\tau}^*_{\kappa,\mu}-1 = 0.\\
+& \nabla^2\wh{S}(\bs{\tau}^*_{\kappa,\mu}, \mu) = \nabla^2 \wh{\mb{E}} Y_n(\bs{\tau}^*_{\kappa,\mu}) - \mu \frac{\nabla^2 \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) \lt[ \kappa - \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) \rt] + \{ \nabla \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) \}^2}{  \lt\{\kappa - \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) \rt\}^2}
+\end{flalign*}
+Then, we have
+\begin{flalign*}
+\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu},\mu) = \nabla \wh{\mb{E}} Y_n(\bs{\tau}^*_{\kappa,\mu}) - \mu \frac{\nabla \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu})}{  \kappa - \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) },
+\end{flalign*}
+
+%As the left hand side is asymptotically normal with mean $\bs{0}$ and
+By Lemma 3, we have  the first term on the right hand side as
+\begin{gather}
+\begin{flalign*}
+\nabla \wh{\mb{E}} Y_n(\bs{\tau})  \overset{d}{\to}\mathcal{N}\lt\{\nabla \mb{E}Y^*(\bs{\tau}),\frac{1}{n}AV\lt[\pard[\bs{\tau}] \int y \,d F_{Y^*(\bs{\tau})}(y | \bs{H}_{1} = \bs{h}_{1}) \rt]\rt\}
+\end{flalign*}
+\end{gather}
+For the second term on the right hand side, we also have that
+\begin{gather*}
+\mu \frac{\nabla \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu})}{  \kappa - \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) } \overset{p}{\to} \mu \frac{\nabla \mb{E} Z(\bs{\tau}^*_{\kappa,\mu})}{  \kappa - \mb{E} Z(\bs{\tau}^*_{\kappa,\mu}) },,
+\end{gather*}
+where we assume  both $\kappa - \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) > 0$ and $\kappa - \mb{E} Z(\bs{\tau}^*_{\kappa,\mu}) > 0$ . This convergence in probabilty is due to the consistency of $\wh{F}_{Z_n(\bs{\tau})}(z | \bs{H}_1 = \bs{h}_1)$ and dominated convergence theorem. Together, by Sluskty's theorem and the stationarity of $\bs{\tau}^*_{\kappa,\mu}$ of $S^*(\bs{\tau}, \mu)$, we have
+\begin{flalign*}
+\sqrt{n} \nabla\wh{S}( {\bs{\tau}}^*_{\kappa,\mu}, \mu) \overset{d}{\to} \mathcal{N}\lt(0, \bs{C}^*\rt),
+\end{flalign*}
+where
+\begin{flalign*}
+\bs{C}^* :=
+AV\lt[\pard[\bs{\tau}] \int y \,d F_{Y^*(\bs{\tau})}(y | \bs{H}_{1} = \bs{h}_{1}) \rt]
+\end{flalign*}
+
+We have that  $\nabla^2\wh{S}(\tilde{\bs{\tau}}_{\kappa,\mu}, \mu) = \nabla^2\wh{S}(\bs{\tau}^*_{\kappa,\mu}, \mu) + o_p(1)$,  as $\tilde{\bs{\tau}}_{\kappa,\mu}$ is in between $\wh{\bs{\tau}}_{\kappa,\mu}$ and $\bs{\tau}^*_{\kappa,\mu}$ and $\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}^*_{\kappa,\mu} = o_p(1)$.
+Therefore, we have
+\begin{flalign*}
+\bs{D}^* \triangleq & p\underset{n \to \infty}{\lim}\nabla^2\wh{S}_{\kappa} (\bs{\tau}^*_{\kappa, \mu}, \mu) \\
+= & p\underset{n \to \infty}{\lim} \lt[\nabla^2 \wh{\mb{E}} Y_n(\bs{\tau}^*_{\kappa,\mu}) - \mu \frac{\nabla^2 \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) \lt[ \kappa - \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) \rt] + \{ \nabla \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) \}^2}{  \lt\{\kappa - \wh{\mb{E}} Z_n(\bs{\tau}^*_{\kappa,\mu}) \rt\}^2}\rt] \\
+= &\nabla^2 \mb{E} Y^*(\bs{\tau}^*_{\kappa,\mu}) - \mu \frac{\nabla^2 \mb{E} Z^*(\bs{\tau}^*_{\kappa,\mu}) \lt[ \kappa - \mb{E} Z^*(\bs{\tau}^*_{\kappa,\mu}) \rt] + \{ \nabla \mb{E} Z^*(\bs{\tau}^*_{\kappa,\mu}) \}^2}{  \lt\{\kappa - \mb{E} Z^*(\bs{\tau}^*_{\kappa,\mu}) \rt\}^2} \\
+= & \nabla^2 {S}^* (\bs{\tau}_{\kappa,\mu}^*, \mu).
+\end{flalign*}
+\end{proof}
+We can estimate $\bs{\Sigma}^*$ by plug in the corresponding estimators stated, and denote the estimator $\wh{\bs{\Sigma}}$, that is, $\wh{\bs{\Sigma}} = \wh{\bs{D}}^{-1}\wh{\bs{C}}\wh{\bs{D}}^{-1}$, where
+
+\begin{flalign*}
+\wh{\bs{C}} = & \wh{V}\lt\{\pard[\bs{\tau}] \int y \,d \wh{F}_{Y_n(\wh{\bs{\tau}}_{\kappa,\mu})}(y | \bs{H}_{1} = \bs{h}_{1}) \rt\} \\
+= & \wh{V} \lt[\nabla \wh{\mb{E}} \lt\{Y_n(\wh{\bs{\tau}}_{\kappa,\mu}) \mid \bs{H}_1 =\bs{h_1}\rt\}\rt]
+\end{flalign*}
+
+and
+\begin{gather*}
+\begin{flalign*}
+\wh{\bs{D}} =   \nabla^2\wh{S}(\wh{\bs{\tau}}_{\kappa,\mu}, \mu) = \nabla^2 \wh{\mb{E}} Y_n(\wh{\bs{\tau}}_{\kappa,\mu}) - \mu \frac{\nabla^2 \wh{\mb{E}} Z_n(\wh{\bs{\tau}}_{\kappa,\mu}) \lt[ \kappa - \wh{\mb{E}} Z_n(\wh{\bs{\tau}}_{\kappa,\mu}) \rt] + \{ \nabla \wh{\mb{E}} Z_n(\wh{\bs{\tau}}_{\kappa,\mu}) \}^2}{  \lt\{\kappa - \wh{\mb{E}} Z_n(\wh{\bs{\tau}}_{\kappa,\mu}) \rt\}^2},
+\end{flalign*}
+\end{gather*}
+
+As $\wh{\bs{C}}$ , $\wh{\bs{D}}$  and $\wh{\bs{\Sigma}}$ maybe have complicated forms, bootstrap based estimators can be used for practical dataset, and Monte Carlo estimators for simulated replicates.\\
+
+\textbf{Confidence set of $\wh{\bs{\tau}}$}\\
+As  Theorem 1 that
+\begin{flalign*}
+	 \bs{\Sigma}^{* -\sfrac{1}{2} }(\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}_{\kappa,\mu}^*) \overset{d}{\to} \mathcal{N}\lt(\bs{0}, \mathbf{I}/n \rt), \text{as } n \to \infty,
+\end{flalign*}
+we have
+\begin{flalign*}
+(\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}_{\kappa,\mu}^*)\bs{\Sigma}^{*-1}(\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}_{\kappa,\mu}^*) \overset{d}{\to} \chi^2_{p+1}/n^2, \text{as } n \to \infty.
+\end{flalign*}
+Thus, with a consistent estimator of $\wh{\bs{\Sigma}}$, the $(1 - \alpha) \times 100 \%$ confidence set is
+\begin{flalign*}
+\bs{\mathcal{C}}_{1-\alpha}\lt(\bs{\tau}^*_{\kappa, \mu}\rt)= \lt\{ \bs{\tau}_{\kappa,\mu}:
+(\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}_{\kappa,\mu})\wh{\bs{\Sigma}}^{-1}(\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}_{\kappa,\mu}) \le \chi^2_{p+1}( 1-\alpha )/n^2 \rt\}, \txt{ as } n \to \infty,
+\end{flalign*}
+where $\chi^2_{p+1}( 1-\alpha )$ is the $1-\alpha$ quantiles of a $\chi_{p+1}^2$ random variable, and $p+1$ is the dimension of $\bs{\tau}$.\\
+
+\textbf{Projection Confidence Interval of $\mb{E}Y^*(\bs{\tau}_{\kappa, \mu}^*)$}\\
+For each $\bs{\tau}_{\kappa, \mu} \in \bs{\mathcal{C}}_{1-\alpha} \lt(\bs{\tau}^*_{\kappa, \mu}\rt)$, we estimate $\mb{E} Y^*(\bs{\tau}_{\kappa, \mu})$ by $\wh{\mb{E}} Y_n(\bs{\tau}_{\kappa, \mu}) = \mean[n] \int y \,d  \wh{F}_{Y_n(\bs{\tau}_{\kappa, \mu})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})  $. Thus, assuming $\wh{F}_{Y_n(\bs{\tau}_{\kappa,\mu})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$ is a consistent estimator of $F_{Y^*(\bs{\tau}_{\kappa,\mu})}(y | \bs{H}_{1,i} = \bs{h}_{1,i})$ , $\wh{\mb{E}} Y_n(\bs{\tau}_{\kappa, \mu})$ has a limiting distribution as
+$$\sqrt{n} \lt\{ \wh{\mb{E}}Y_n(\bs{\tau}_{\kappa, \mu})  - \mb{E} Y^*(\bs{\tau}_{\kappa, \mu}) \rt\} \sim  \mathcal{N}\lt[ 0 , AV\lt\{ \int y \,d  F_{Y^*(\bs{\tau}_{\kappa,\mu})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt\}\rt].$$
+For each $\bs{\tau}_{\kappa, \mu} \in \bs{\mathcal{C}}_{1-\alpha} \lt(\bs{\tau}^*_{\kappa, \mu}\rt)$, we can construct a $(1 - \eta ) \times 100 \%$ confidence interval
+\begin{flalign*}
+&\bs{\mathcal{I}}_{1 -\eta} \lt\{ \mb{E}Y^*(\bs{\tau}_{\kappa, \mu})  \rt\} \\
+= & \lt\{\wh{\mb{E}}Y_n(\bs{\tau}_{\kappa, \mu}) - Z_{1- \eta/2}  \wh{\sigma}_{Y^*(\bs{\tau}_{\kappa,\mu})} ,  \wh{\mb{E}}Y_n(\bs{\tau}_{\kappa, \mu}) + Z_{1 - \eta/2} \wh{\sigma}_{Y^*(\bs{\tau}_{\kappa,\mu})}  \rt\}
+\end{flalign*}
+where $\wh{\sigma}_{Y^*(\bs{\tau}_{\kappa,\mu})}$ is the estimator for $AV\lt\{ \int y \,d  F_{Y^*(\bs{\tau}_{\kappa,\mu})}(y | \bs{H}_{1,i} = \bs{h}_{1,i}) \rt\}$, which can also be calculated by bootstrap estimator  for practical dataset, or Monte Carlo estimator for simulated replicates.  $Z_{1- \eta/2}$ is the upper $1- \eta/2$ critical value for the standard normal distribution. Alternatively, we can also construct this confidence interval using standard methods such as percentile bootstrap. Then, we can construct the projection confidence set for $ \mb{E}Y^*\lt(\bs{\tau}_{\kappa, \mu}\rt)$ by taking the union of $\bs{\mathcal{I}}_{1 -\eta} \lt\{ \mb{E}Y^*\lt(\bs{\tau}_{\kappa, \mu}\rt)  \rt\}$ over all $\bs{\tau}_{\kappa, \mu} \in \bs{\mathcal{C}}_{1-\alpha} \lt(\bs{\tau}^*_{\kappa, \mu}\rt)$, i.e.,
+$$
+\bs{\mathcal{U}}_{1 - \alpha - \eta} \lt\{ \mb{E}Y^*(\bs{\tau}_{\kappa, \mu})  \rt\} = \bigcup_{\bs{\tau}_{\kappa, \mu} \in \bs{\mathcal{C}}_{1-\alpha} \lt(\bs{\tau}^*_{\kappa, \mu}\rt)} \bs{\mathcal{I}}_{1 -\eta} \lt\{ \mb{E}Y^*(\bs{\tau}_{\kappa, \mu})  \rt\}.
+$$

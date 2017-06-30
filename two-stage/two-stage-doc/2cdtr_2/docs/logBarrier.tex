@@ -1,0 +1,140 @@
+\documentclass[14pt]{extreport}       
+\usepackage[a4paper, total={8in, 10in}]{geometry}            
+\usepackage[utf8]{inputenc}                            
+\usepackage[T1]{fontenc}                              
+\usepackage{amsmath}                            
+\usepackage{amsfonts}                            
+\usepackage{amssymb}                 
+\usepackage{enumitem}           
+\begin{document}
+\setlength\parindent{0pt}
+\subsection*{Log Barrier Method} 
+
+The inequality-constrained optimization problem is stated as
+\begin{flalign*}
+\min_{x} & \, f\left( x\right)   \\
+\text{subject to } &  c(x) \ge 0,
+\end{flalign*}
+where both $f(x)$ and $c(x)$ are assumed to be continuous. \\
+
+Log barrier method is  to find an unconstrained minimizer of a composite function that reflects the original objective function as well as the presence of constraints. The logarithmic barrier function is defined as\\
+\begin{flalign*}
+B(x, \mu) = f(x) - \mu \sum_{i=1}^{m} \text{ln} c_i(x),
+\end{flalign*}
+where $\mu$ is a positive scalar, the barrier parameter. $B(x, \mu)$ retains the smoothness properties of $f(x)$ and $c(x)$ as long as $c(x) > 0$. For very small $\mu > 0$, $B(x, \mu)$ acts like $f(x)$ except close to points where any constraint is zero. Intuition suggests that minimizing $B(x, \mu)$ for a sequence of positive $\mu$ values converging to zero will cause the unconstrained minimizers of $B(x,\mu)$ to converge to a local constrained minimizer of the original problem. The gradient of the barrier function, denoted by $\nabla B(x, \mu)$, is 
+\begin{flalign*}
+\nabla B(x, \mu) = \nabla f(x) - \sum_{i=1}^{m} \frac{\mu}{c_i(x)} \nabla c_i(x ).
+\end{flalign*}\\
+
+An unconstrained minimizer will be denoted by $x_{\mu}$, and it will be proven later that $c(x_{\mu}) > 0$. By the optimality conditions for unconstrained optimization (P591 Lemma A7), it must hold that $\nabla B(x_{\mu}, \mu) = 0$ when $\nabla B(x, \mu)$ is twice-continuously differentiable. This leads to that 
+\begin{flalign*}
+\nabla f(x_{\mu}) = \sum_{i=1}^{m} \frac{\mu}{c_i(x)} \nabla c_i(x).
+\end{flalign*}
+This implies that the objective gradient at $x_{\mu}$ is a positive linear combination of the constraint gradients. The coefficients in the linear combination are called the barrier multiplier (analogy with Lagrange multipliers), denoted by $\lambda_{\mu}$. Formally, $\lambda_{\mu}$ is defined as 
+\begin{flalign*}
+\lambda_{\mu} \triangleq \mu \cdot/ c(x),
+\end{flalign*}
+with $\lambda_{\mu} > 0$. Thus, we have 
+$$c(x_{\mu}) \cdot \lambda_{\mu} = \mu.$$ 
+This relationship betwwen the barrier multipliers, constraint values, and the barrier parameter, called perturbed complementarity, is analogous as $\mu \to 0$ to the complementarity condition $c(x) \cdot \lambda = 0$ that holds at a KKT point.\\
+????????????????????????????????????????????????????????????????????????\\
+Consider this inequality constrained optimization problem. Here is a theorem, called existence of compact enclosing set theorem, needed for the local convergence theorem. $\mathcal{N}$ denote the set of all local constrained minimizers with objective function value $f^*$, and assume that $f^*$ has been chosen so that $\mathcal{N}$ is non-empty. Assume further that the set $\mathcal{N}^* \subseteq \mathcal{N}$ is a nonempty compact isolated subset of $\mathcal{N}$. Then there exist a compact set $S$ such that $\mathcal{N}^*$ lies in $int(S) \cap \mathcal{F}$ and $f(y) > f^*$ for any feasible point $y$ in $S$ but not in $\mathcal{N}^*$. Every point $x^*$ in $\mathcal{N}^*$ thus has the property that $f(x^*) = f^* = min f(x)$ for all $x \in S \cap \mathcal{F}$, where $\mathcal{F}$ is the feasible region.\\
+????????????????????????????????????????????????????????????????????????\\
+
+\textbf{THEOREM: Local convergence for barrier methods}\\
+Consider the problem of minimizing $f(x)$ subject to $c(x) \ge 0$, where $f(x)$ and $c(x)$ are continuous. Let $\mathcal{F}$ denote the feasible region, let $\mathcal{N}$ denote the set of minimizers with objective function value $f^* = \text{min} f(x)$, and assume that $\mathcal{N}$ is non-empty.  Let $\{ \mu_{\kappa}\}$ be a strictly decreasing sequence of  positive barrier parameters such that $\lim_{k \to \infty} \mu_{k} = 0$. Assume that 
+\begin{enumerate}[label=(\alph*)]
+	\item there exists a non-empty compact set $\mathcal{N}^*$ of local minimizers that is an isolated subset of $\mathcal{N}$;
+	\item at  least one point in $\mathcal{N}^*$ is in the closure of strict($\mathcal{F}$), i.e.,  there is at lease one point in $\mathcal{N}^*$ that is strictly feasible or the limiting point of $\mathcal{F}$.
+\end{enumerate}
+Then the following results hold:
+\begin{enumerate}[label=(\roman*)]
+	\item there exists a compact set $S$ such that $\mathcal{N}^* \subset \text{int}(S)$ and such that , for any feasible point $\bar{x}$ in $S$ but not in $\mathcal{N}^*$, $f(\bar{x}) > f^*$;
+	\item for all sufficiently small $\mu_{k}$, there is an unconstrained minimizer $y_k$ of the barrier function $B(x, \mu_{k})$ in $\text{strict}(\mathcal{F}) \cap \text{int}(S)$, with
+	$$B(y_k, \mu_{k}) = \text{min} \{ B(x, \mu_{\kappa}) : x \in strict(\mathcal{F}) \cap S)\}.$$ Thus $B(y_{\kappa}, \mu_{\kappa})$ is the smallest value of $B(x, \mu_{\kappa})$ for any $x \in \text{strict}(\mathcal{F}) \cap S$.
+	\item any sequence of these unconstrained minimizers $\{ y_{k}\}$ of $B(x , \mu_{\kappa})$ has at least one convergent subsequence;
+	\item the limit point $x_{\infty}$ of any convergent subsequence $\{x_{k}\}$ of the unconstrained minimizers $\{ y_{k}\}$ defined in (ii) lies in $\mathcal{N}^*$.
+	\item for the convergent subsequences $\{ x_k\}$ of part (iv)
+	$$\underset{k \to \infty}{\text{lim}}f(x_{\kappa}) =  f^* = \underset{k \to \infty}{\text{lim}} B(x_{\kappa}, \mu_{\kappa}).$$
+\end{enumerate}
+
+\textbf{THEOREM: Properties of the central path/barrier trajectory}\\
+Consider the problem of minimizing $f(x)$ subject to $c(x) \ge 0$. Let $\mathcal{F}$ denote the feasible region, and assume that the set strict($\mathcal{F}$) of strictly feasible points is non-empty. Let $x^*$ be a local constrained minimizer, with $g^*$ denoting $g(x^*)$, $J^*$ denoting $J(x^*)$, and so on, and let $\mathcal{A}$ denote $\mathcal{A}(x^*)$. Assume that the following sufficient optimality conditions hold at $x^*$:
+\begin{enumerate}[label=(\alph*)]
+	\item $x^*$ is a KKT point, i.e., there exists a nonempty set $\mathcal{M}_{\lambda}$ of Lagrange multipliers $\lambda$ satisfying 
+	$$\mathcal{M}_{\lambda} = \{ \lambda: g^* = J^{*T}\lambda, \lambda \ge 0, \text{and } c(x^*)\cdot \lambda = 0 \}$$
+	\item the MFCQ (a condition on the constraints) holds at $x^*$, i.e., there exists $p$ such that $J^*_{\mathcal{A}}p > 0$, where $J^*_{\mathcal{A}}$ denotes the Jacobian of the active constraints at $x^*$; and
+	\item there exists $\omega > 0$, such that $p^T H(x^*, \lambda)p \ge w \| p\|^2 $ for all $\lambda \in \mathcal{M}_{\lambda}$ and all nonzero $p$ satisfying $g^{*T}p=0$ and $J^*_{\mathcal{A}} p \ge 0$, where $H(x^*, \lambda)$ is the Hessian of the Lagrangian (2.11). $H(x, \lambda) \triangleq \nabla^2_{xx} L(x, \lambda) =  \nabla^2 f(x) - \sum_{i=1}^{m} \lambda_i \nabla^2 c_i(x)$
+\end{enumerate}
+	Assume that a logrithmic barrier method is applied in which $\mu_{k}$ converges monotonically to zero as $k \to \infty$. Then, 
+	\begin{enumerate}[label=(\roman*)]
+		\item there is at least one subsequence of unconstrained minimizers of the barrier function $B(x, \mu_k)$ converging to $x^*$; 
+		\item let $\{ x^k\}$ denote such a convergent subsequence, with the obvious notation that $c_i^k$ denotes $c_i(x^k)$, and so on. Then the sequence of barrier multipliers $\{ \lambda^{k}\}$, whose i-th component is $\mu_k / c_i^k$, is bounded;
+		\item $\text{lim}_{k \to \infty} \lambda^k = \bar{\lambda} \in \mathcal{M}_{\lambda}$
+	\end{enumerate} 
+	If, in addition, strict complementarity holds at $x^*$, i.e, there is a vector $\lambda \in \mathcal{M}_{\lambda}$ such that $\lambda_i > 0$ for all $i \in \mathcal{A}$, then
+	\begin{enumerate}[label=(\roman*)]
+		\addtocounter{enumi}{3}
+		\item $\bar{\lambda}_{\mathcal{A}} > 0$;
+		\item for sufficiently large $k$, the Hessian matrix $\nabla^2 B(x^k, \mu_k)$ is positive defnite;
+		\item a unique, continuously differentiable vector function $x(\mu)$ of unconstrained minimizers of $B(x,\mu)$ exisits for positive $\mu$ in a neighborhood of $\mu=0$; and 
+		\item $\text{lim}_{\mu \to 0_{+}} x(\mu) = x^*$
+	\end{enumerate}
+
+\textbf{Problem}
+\begin{flalign*}
+ \min_{\tau} & \iint -\text{sgn}\left( v \right) u \,f_{Y}\left( u,v ;\tau \right) \,du\,dv \\
+\text{subject to } & \kappa - \iint \text{sgn}\left( v \right) w\,f_{Z}\left( w,v;\tau \right)\, dw\,dv \geq 0 
+\end{flalign*}\\
+\textbf{Log-barrier formation}
+\begin{flalign*}
+B(\tau, \mu) = \iint - \text{sgn}(v) u f_Y(u, v; \tau)\,du\,dv - \mu \text{ln} \left[ \kappa - \iint \text{sgn}(v) w f_{Z} (w, v; \tau) \,dw \,dv \right],
+\end{flalign*}
+and
+\begin{flalign*}
+\nabla B(\tau, \mu) = \iint - \text{sgn}(v) u \nabla f_Y(u, v; \tau)\,du\,dv + \mu \frac{\iint \text{sgn}(v) w \nabla f_{Z} (w, v; \tau) \,dw \,dv}{\kappa - \iint \text{sgn}(v) w f_{Z} (w, v; \tau) \,dw \,dv},
+\end{flalign*}
+
+where $\mu$ is a sequence of decreasing positive constants converging to zero. Note that $\nabla$ is the first order derivative with respect to $\tau$.\\
+
+ We denote an unconstrained minimizer of $B(\tau, \mu)$ as $\tau(\mu)$ or $\tau_{\mu}$. $\tau(\mu)$ is used when we need to emphasize it as a function of the barrier parameter $\mu$, and $\tau(\mu)$ is used for short notation embedded in equations. It can be proven that the constraint is strictly satisfied, i.e., $\kappa - \iint \text{sgn}\left( v \right) w\,f_{Z}\left( w,v;\tau_{\mu} \right)\, dw\,dv > 0$. Assume that $\nabla B(\tau, \mu)$ is twice-continuously differentiable, it must hold that $\nabla B(\tau_{\mu}, \mu) = 0$, which means that 
+ \begin{flalign*}
+\iint \text{sgn}\left( v \right) u \, \nabla f_{Y}\left( u,v ;\tau_{\mu} \right) \,du\,dv  
+=   \mu \frac{\iint \text{sgn}(v) w \nabla f_{Z} (w, v; \tau) \,dw \,dv}{\kappa - \iint \text{sgn}(v) w f_{Z} (w, v; \tau_{\mu}) \,dw \,dv}
+ \end{flalign*}
+The barrier multiplier, the coefficient in that linear relationship, is denoted by $\lambda_{\mu}$ and is defined as 
+\begin{flalign*}
+\lambda_{\mu} \triangleq \frac{\mu}{\kappa - \iint \text{sgn}(v) w f_{Z}(w, v; \tau_{\mu}) \,dw \,dv}
+\end{flalign*}
+This relationship can be written as
+\begin{flalign*}
+\lambda_{\mu}\left[ \kappa - \iint \text{sgn}(v) w f_{Z}(w, v; \tau_{\mu}) \,dw \,dv \right]= \mu.
+\end{flalign*}
+This relationship between the barrier multiplier, constraint value, and the barrier parameter, called perturbed complementarity, is analogous as $\mu \to 0$ to the complementarity condition $c(x^*) \lambda^* = 0$ that holds at a KKT point.\\
+
+\textbf{Optimality conditions for the central path/barrier trajectory}\\
+
+We display the optimality conditions for the central path/barrier trajectory. Consider the problem stated above.  Let $\mathcal{F}$ denote the feasible region, and assume that the set strict($\mathcal{F}$) of strictly feasible points is non-empty.Let $\tau^*$ be a local constrained minimizer, with $g^*$ denoting $g(\tau^*) = \nabla f(\tau^*)$, $J^*$ denoting $J(\tau^*) = \nabla c(\tau^*)$, and so on, and let $\mathcal{A}$ denote $\mathcal{A}(\tau^*)$. Assume theat the following sufficient optimality conditions hold at $\tau^*$:
+\begin{enumerate}[label=(\alph*)]
+	\item $\tau^*$ is a KKT point, i.e., there exists a nonempty set $\mathcal{M}_{\lambda}$ of Lagrange multipliers $\lambda$ satisfying 
+	$$\mathcal{M}_{\lambda} = \{ \lambda: g^* = J^{*T}\lambda, \lambda \ge 0, \text{and } c(\tau^*)\cdot \lambda = 0 \}$$
+	\item the MFCQ (a condition on the constraints) holds at $\tau^*$, i.e., there exists $p$ such that $J^*_{\mathcal{A}}p > 0$, where $J^*_{\mathcal{A}}$ denotes the Jacobian of the active constraints at $\tau^*$; and
+	\item there exists $\omega > 0$, such that $p^T H(\tau^*, \lambda)p \ge w \| p\|^2 $ for all $\lambda \in \mathcal{M}_{\lambda}$ and all nonzero $p$ satisfying $g^{*T}p=0$ and $J^*_{\mathcal{A}} p \ge 0$, where $H(x^*, \lambda)$ is the Hessian of the Lagrangian (2.11). $H(\tau, \lambda) \triangleq \nabla^2_{\tau\tau} L(\tau, \lambda) =  \nabla^2 f(\tau) - \sum_{i=1}^{m} \lambda_i \nabla^2 c_i(\tau)$
+\end{enumerate}
+Assume that a logrithmic barrier method is applied in which $\mu_{k}$ converges monotonically to zero as $k \to \infty$. Then, 
+\begin{enumerate}[label=(\roman*)]
+	\item there is at least one subsequence of unconstrained minimizers of the barrier function $B(\tau, \mu_k)$ converging to $\tau^*$; 
+	\item let $\{ \tau^k\}$ denote such a convergent subsequence, with the obvious notation that $c_i^k$ denotes $c_i(\tau^k)$, and so on. Then the sequence of barrier multipliers $\{ \lambda^{k}\}$, whose i-th component is $\mu_k / c_i^k$, is bounded;
+	\item $\text{lim}_{k \to \infty} \lambda^k = \bar{\lambda} \in \mathcal{M}_{\lambda}$
+\end{enumerate} 
+If, in addition, strict complementarity holds at $\tau^*$, i.e, there is a vector $\lambda \in \mathcal{M}_{\lambda}$ such that $\lambda_i > 0$ for all $i \in \mathcal{A}$, then
+\begin{enumerate}[label=(\roman*)]
+	\addtocounter{enumi}{3}
+	\item $\bar{\lambda}_{\mathcal{A}} > 0$;
+	\item for sufficiently large $k$, the Hessian matrix $\nabla^2 B(\tau^k, \mu_k)$ is positive defnite;
+	\item a unique, continuously differentiable vector function $\tau(\mu)$ of unconstrained minimizers of $B(\tau,\mu)$ exisits for positive $\mu$ in a neighborhood of $\mu=0$; and 
+	\item $\text{lim}_{\mu \to 0_{+}} \tau(\mu) = \tau^*$
+\end{enumerate}
+
+
+\end{document}

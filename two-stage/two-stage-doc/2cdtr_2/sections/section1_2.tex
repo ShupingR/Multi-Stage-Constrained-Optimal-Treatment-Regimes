@@ -1,0 +1,125 @@
+%set-up
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\textbf{\large Set-up}\\
+We focus on the case of a two-stage treatment regime with two competing outcomes and binary treatment options. The observed data are denoted by $\{(\bs{X}_{1,i}, A_{1,i},\bs{X}_{2,i}, A_{2,i} Y_{i},Z_{i})\}_{i=1}^{n}$, which comprises $n$ identically, independently distributed patient trajectories $\{(\bs{X}_{1}, A_{1},\bs{X}_{2}, A_{2}, Y,Z)\}$. Capital letters denote random variables; lower case letters denote realized values of these random variables. Let $\bs{X}_1$ be a patient baseline covariate, $A_1$ be the first-stage treatment variable, $\bs{X}_2$ be the patient covariate collected between frist decision point and second decision point, $A_2$ be the second-stage treatment variable. The primary and secondary competing outcomes are denoted by $Y$ and $Z$, respectively. The outcome $Y$ is coded so that higher values are better, and the outcome $Z$ is coded so that the lower values are better.  A dynamic treatment regime, $\bs{d} = (d_1, d_2)$, is a pair of decision rules. For each $t = 1, 2$, let $\bs{H}_t$ denote the patient history information up to the decision point $t$, i.e., $\bs{H}^\itl_1 = (1, \bs{X}^\itl_1)$ and  $\bs{H}^\itl_2 = (1, \bs{X}^\itl_1, A_1, \bs{X}^\itl_2)$. For each $t = 1, 2$, $d_t : \text{dom}(\bs{H}_{t}) \to \text{dom}(A_t)$, is a function that maps from the space of $\bs{H}_{t}$ to the space of feasible treatment $A_t$ at the time point $t$. In summary, the observed data trajectory is denoted 
+$$\bs{W}= \{(\bs{X}_{1}, A_{1}, \, \bs{X}_{2},  \, A_{2}, \,  Y, \, Z)\},$$
+$$ \bs{H}_{1}^\itl = (1,  \bs{X}_{1}^\itl)$$
+$$\bs{H}_2^\itl = (1,  \bs{X}_1^\itl,  A_1, \bs{X}_2^\itl) = ( \bs{H}_1^\itl, A_1, \bs{X}_2^\itl )$$ \\
+
+To construct an estimand of interest and make inference from observed data, we follow the potential outcomes or counter-factual framework, which quantifies treatment effects of dynamic treatment regimes, proposed by Neyman, Rubin and Robins. For an arbitrary treatment sequence $(a_1, a_2)$, the set of potential outcomes of the patient is
+$$W^*(a_1, a_2) = \left\{ \bs{X}_2^*(a_1), Y^*(a_1, a_2), Z^*(a_1, a_2): (a_1, a_2) \in \{-1, 1 \}^2 \right\}$$
+$$\bs{H}_2^*(a_1) = \left\{ 1, \bs{X}_1^\itl, a_1, \bs{X}^{*\intercal}_2(a_1)\right\}^\itl$$ 
+
+Furthermore, the potential outcomes of the patient following a treatment regime $\bs{d}$ are denoted as $Y^{*}(\bs{d})=Y^{*}\left(d_1, d_2\right)$ and $Z^{*}(\bs{d})=Z^{*}\left(d_1, d_2\right)$.\\
+
+\textbf{\large Define a constrained optimal regime }\\
+ Our goal is to find a optimal constrained regime, $\bs{d}_{\kappa}^{0}$, which, at the population level, maximizes the expectation of the primary potential outcome $\mathbb{E}Y^{*}\left( \bs{d}\right) $, subject to an upper bound on the expectation of the secondary potential outcome $\mathbb{E}Z^{*}\left( \bs{d}\right) $.  Therefore, the two-stage constrained optimal regime problem is defined with respect to potential outcomes as
+	\begin{equation*}
+	\begin{aligned}
+	& \underset{\bs{d} \in \mathcal{D}}{\txt{maximize}}
+	& & \mb{E}Y^*( \bs{d} ) \\
+	& \txt{subject to}
+	& &  \mb{E}Z^*( \bs{d} ) \le \kappa,
+	\end{aligned}
+	\end{equation*}
+	where $\bs{d} = (d_1, d_2)$ is the two stage decision rule and $\mathcal{D}$ is the class of two-stage regimes under consideration. As we are restricted to the class of the linear decision rule, the class of decision rules, indexed by $\bs{\tau} = (\tau_1, \tau_2)$,  is  
+	$\mathcal{D} = \{ \bs{d} = (d_1, d_2)\}$ where $ d_1(\bs{h}_1; \bs{\tau}_1) = \tsgn(\bs{h}_1^\itl\bs{\tau}_1) = \tsgn\lt\{r_1(\bs{h}_1; \bs{\tau}_1)\rt\},$
+	and $d_2(\bs{h}_2;\bs{\tau}_2) = \tsgn(\bs{h}_2^\itl\bs{\tau}_2) = \tsgn\{ r_2(\bs{h}_2; \bs{\tau}_2 )\}$. Let $r_1(\bs{h}_1; \bs{\tau}_1) = \bs{h}^\itl_1 \bs{\tau}_1$ and $r_2(\bs{h}_2; \bs{\tau}_2) = \bs{h}^\itl_2 \bs{\tau}_2$. $\bs{\tau}^{0\itl} = (\bs{\tau}_1^{0\itl},\bs{\tau}_2^{0\itl})$ are the indexing parameters for the constrained optimal dynamic treatment regime defined. Hence, both $\mb{E}Y^*(\bs{d})$ and $\mb{E}Z^*(\bs{d})$ can be considered as functions of $\bs{\tau}$. As we will be solving them over $\bs{\tau} = ( \bs{\tau}_1, \bs{\tau}_2)$, we use the notations of $\mb{E}Y^*(\bs{\tau})$ and $\mb{E}Z^*(\bs{\tau})$ from now on. As only the directions of $\bs{h}^\itl_t\bs{\tau}_t$, $t = 1, 2$, matters, we restrict $\bs{\tau}_t$ to be unit vectors, i.e., $\bs{\tau}^\itl_t\bs{\tau}_t = 1$ . Then, the problem above can be written as
+	\begin{equation}
+	\begin{aligned}
+	& \underset{\bs{\tau}}{\txt{maximize}}
+	& & \mb{E}Y^*( \bs{\tau} ) \\
+	& \txt{subject to}
+	& &  \kappa - \mb{E}Z^*( \bs{\tau} ) \le 0, \\
+	& \, 
+	& & \bs{\tau}_1^\itl \bs{\tau}_1^\itl - 1 =0 \text{, and }  \bs{\tau}_2^\itl \bs{\tau}_2^\itl - 1 = 0.
+	\end{aligned}
+	\end{equation}
+	A constrained optimal dynamic treatment regime  is defined to be a solution to the problem above, and is denoted by
+	$\bs{d}_{\kappa}^0 = ( d_{\kappa,1}^0,  d_{\kappa,2}^0)$, where $d_{\kappa,1}^0(\bs{h}_1) = \tsgn(\bs{h}^\itl_1\bs{\tau}^0_{1,\kappa}) =\tsgn\lt\{ r_1(\bs{h}_1; \bs{\tau}^0_{1,\kappa})\rt\}$ and $d_{\kappa,2}^0(\bs{h}_2) = \tsgn(\bs{h}^\itl_2\bs{\tau}^0_{2,\kappa}) = \tsgn\lt\{ r_2(\bs{h}_2; \bs{\tau}^0_{2,\kappa})\rt\}$. 
+	
+\begin{comment}
+\textbf{ Convergence of the Penalty-Barrier Trajectory  $\bs{\tau}^*_{\kappa}(\mu)$  to $\bs{\tau}^0_{\kappa}$}\\
+
+\textbf{ Convergence in probabilty of the estimator  to $\hat{\bs{\tau}}_{\kappa}(\mu)$ to  the Penalty-Barrier Trajectory  $\bs{\tau}^*_{\kappa}(\mu)$} \\
+
+%\mnote{ convergence $\hat{\tau}_{\kappa}(\mu) \overset{p}{\to} \tau^*_{\kappa}(\mu) \to  \tau^0_{\kappa}(\mu)$} 
+
+Step 1:  $\underset{\bs{\tau}, \| \bs{\tau}_1 \|^2 = 1, \| \bs{\tau}_2 \|^2 = 1}{\sup} \mid \hat{S} (\bs{\tau}, \mu) -S^*( \bs{\tau}, \mu)  \mid = o_p(1)$ \\
+
+Let $S^*(\bs{\tau}, \mu) = \mb{E} Y^*(\bs{\tau}) + \mu \txt{log} \lt\{ \kappa - \mb{E} Z^*(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\},$ and $\widehat{S}(\bs{\tau}, \mu) = \wh{\mb{E}} Y(\bs{\tau}) + \mu \, \txt{log} \lt\{ \kappa - \wh{\mb{E}}Z(\bs{\tau}) \rt\} - \frac{1}{2\mu} \lt\{ (\bs{\tau}_1^\itl \bs{\tau}_1 -1 )^2 + (\bs{\tau}_2^\itl \bs{\tau}_2 -1 )^2 \rt\},$ then
+$$\widehat{S}(\bs{\tau}, \mu) - S^*(\bs{\tau}, \mu) = \hat{\mb{E}} Y(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  + \mu \, \txt{log}\frac{ \kappa - \hat{\mb{E}}Z(\bs{\tau})}{ \kappa - \mb{E} Z^*(\bs{\tau})}$$
+
+First look at $\hat{\mb{E}} Y_n(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})$
+
+$Y_n(\bs{\tau}) \sim F_{Y_n}(y;\bs{\tau})$ 
+
+If $Y_n(\bs{\tau}) \overset{d}{\to} Y^*(\bs{\tau})$, aka, $\wh{F}_{Y_n}(y;\bs{\tau}) \to F_Y(y;\bs{\tau}), \text{as } n \to \infty$, for all $y$ at which $F_Y(\cdot, \bs{\tau})$ is continuous. Also,  for each $\bs{\tau}$, if there exists some random variable $T$, such that  $|Y_n(\bs{\tau})| \le |T|$ for all $n$ and $\mb{E} |T| \le \infty$, then $\wh{\mb{E}} Y_n(\bs{\tau}) \to \mb{E} Y^*(\bs{\tau})$.
+Thus, we have $\wh{\mb{E}} Y_n(\bs{\tau}) - \mb{E} Y^*(\bs{\tau}) = o_p(1)$ \\
+
+Step 2:  conditions for $\wh{F}_{Y_n}(y;\bs{\tau}) \to F_Y(y;\bs{\tau}), \text{as } n \to \infty$\\
+
+Step 3:  Consistency of $\wh{\bs{\tau}}_{n,\kappa} \to \bs{\tau}^*_{\kappa}$. It can be proven by following similar proof in Lemma 2 at one-stage. \\
+
+Step 4: Asymptotic Normality of $\wh{\bs{\tau}}_{n,\kappa}$ \\
+Taylor expansion, for each $\mu$ \\
+
+$\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu}) = \nabla\wh{S}(\wh{\bs{\tau}}_{\kappa,\mu}) - \nabla^2\wh{S}(\tilde{\bs{\tau}}_{\kappa,\mu} ) (\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}^*_{\kappa,\mu} )$
+
+
+$\sqrt{n}\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu}) =  -\sqrt{n} \nabla^2\wh{S}(\tilde{\bs{\tau}}_{\kappa,\mu} ) (\wh{\bs{\tau}}_{\kappa,\mu} - \bs{\tau}^*_{\kappa,\mu} )$
+
+\begin{flalign*}
+\nabla\wh{S}(\bs{\tau}^*_{\kappa,\mu}) = \nabla \mb{E} Y(\bs{\tau}) - \mu \frac{\nabla \mb{E} Z(\bs{\tau})}{  \kappa - \mb{E} Z(\bs{\tau}) } 
+\end{flalign*}
+
+\begin{flalign*}
+\nabla^2\wh{S}(\bs{\tau}^*_{\kappa,\mu}) = \nabla^2 \mb{E} Y(\bs{\tau}) - \mu \frac{\nabla^2 \mb{E} Z(\bs{\tau}) \lt[ \kappa - \mb{E} Z(\bs{\tau}) \rt] + \{ \nabla \mb{E} Z(\bs{\tau}) \}^2}{  \lt\{\kappa - \mb{E} Z(\bs{\tau}) \rt\}^2} 
+\end{flalign*}
+\begin{flalign*}
+& \nabla \wh{\mb{E}} Y(\bs{\tau})\\
+= & \nabla\int y \,d \wh{F}_{Y(\bs{\tau})}(y) \\
+= &  \nabla\int y \lt[ \,d \iint  F_{\epsilon}\lt\{ y - m_Y - \tsgn(r_2)c_Y\rt\}\,d G_{Y}\lt\{ m_Y, c_Y, r_2 \mid \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1) \rt] \\
+= &  \nabla\int y \lt[ \,d \iint  F_{\epsilon}\lt\{ y - m_Y - \tsgn(r_2)c_Y\rt\}\,d G_{Y}\lt\{ m_Y, c_Y, r_2 \mid \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1) \rt] 
+\end{flalign*}
+Assuming $d G_Y$ is correctly specified and is differentiable and continuous
+\\
+
+Step 5: Projected CI for $\wh{\mb{E}} Y_n(\wh{\bs{\tau}}_{n,\kappa})$
+
+Is $d F - d \hat{F} = d(F - \hat{F})$ ??\\
+Note: 
+convergence $\hat{\tau}_{\kappa}(\mu) \overset{p}{\to} \tau^*_{\kappa}(\mu) \to  \tau^0_{\kappa}(\mu)$ 
+\begin{flalign*}
+&  \hat{\mb{E}} Y(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  \\
+= & \int y \,d \wh{F}_{Y_d} (y) - \int y \,d F_{Y^*_d} (y) \\
+= &  \int y  \lt\{  \,d\wh{F}_{Y_d} (y) - \,d F_{Y^*_d} (y) \rt\}  \\
+% = & \int y  \lt\{ \wh{f}_{Y_d} (y) - f_{Y^*_d} (y) \rt\} \,dy
+\end{flalign*}
+If for any arbitrary $\bs{d}$, $d F_{Y^*_{\bs{d}}} (y) $ is a density and $d\wh{F}_{Y_{\bs{d}}}(y)$ is a uniformly consistent estimator; that is $\underset{y}{\sup} \mid d\wh{F}_{Y_d} (y) - d F_{Y^*_d} (y) \mid =o_p(1)$, then 
+
+\begin{flalign*}
+&  \hat{\mb{E}} Y(\bs{\tau}) - \mb{E} Y^*(\bs{\tau})  \\
+= & \int y \,d \wh{F}_{Y_d} (y) - \int y \,d F_{Y^*_d} (y) \\
+= &  \int y  \lt\{  \,d\wh{F}_{Y_d} (y) - \,d F_{Y^*_d} (y) \rt\}  \\
+\le & \int \mid y \mid \, dy  \cdot o_p(1) \\
+% = & \int y  \lt\{ \wh{f}_{Y_d} (y) - f_{Y^*_d} (y) \rt\} \,dy\\
+= &  \iint  F_{\varepsilon_Y}\lt[ y - m(\bs{h}_2) - \tsgn\lt\{r_2(\bs{h}_2; \bs{\tau}_2)\rt\}c_Y(\bs{h}_2) \rt] \,d G_{Y}\lt\{ m_Y, c_Y, r_2 \rvert \bs{h}_1 , d_1(\bs{h}_1)\rt\} \,d F_{\bs{H}_1}(\bs{h}_1) 
+\end{flalign*}
+
+\newpage
+\textbf{Reference}\\
+
+\textbf{Convergence in Distribution}\\
+Suppose that $(X_1, X_2, \dots)$ and $X$ are real-valued random variables with distribution functions $(F_1, F_2,  \dots)$ and $F$, respectively. We say that the distribution of $X_n$ converges to the distribution of $X$ as $n \to \infty$ if
+$$F_n(x) \to F(x), \text{as } n \to \infty$$
+for all $x$ at which $F$ is continuous. \\
+% Link https://www.probabilitycourse.com/chapter7/7_2_4_convergence_in_distribution.php
+
+\textbf{Lebesgue's Dominated Convergence Theorem}\\
+If for some random variable $Z$, $| X_n | \le | Z |$ for all $n$ and $\mb{E} | Z | \le \infty$, then $X_n \overset{d}{\to} X$ implies that $\mb{E} X_n \to \mb{E} X$.
+
+\end{comment}
+
+\end{document}
