@@ -4,3 +4,6 @@ output: html_document
 ---
 
 ![image](https://github.com/ShupingR/Multi-Stage-Constrained-Optimal-Treatment-Regimes/blob/master/test/g-computation-formula.jpeg)
+
+Reference:
+Construction of Counterfactuals and the G-computation Formula. Zhuo Yu, Mark J. van der Laan.
