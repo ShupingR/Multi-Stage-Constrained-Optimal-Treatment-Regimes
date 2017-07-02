@@ -1,0 +1,11 @@
+Section
+1: Identify the problem,Setup,Define the new estimand
+2: Estimator
+3: Convergence of the penalty barrier trajectory
+4: Consistency of hat{tau}(mu) to tau^*(mu)
+5: Asymptotic dist’n
+6: Simulation results
+:
+:
+A1: Penalty-barrier trajectory convergence theorem
+A2: Convergence ofPrY

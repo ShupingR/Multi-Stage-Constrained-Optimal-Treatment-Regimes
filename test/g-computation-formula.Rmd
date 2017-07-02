@@ -1,0 +1,6 @@
+---
+title: "g computation formula"
+output: html_document
+---
+
+![image](/Users/shuping.ruan/GitHub/research-github/test/g-computation-formula.jpeg)
