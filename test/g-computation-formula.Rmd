@@ -3,4 +3,4 @@ title: "g computation formula"
 output: html_document
 ---
 
-[[Multi-Stage-Constrained-Optimal-Treatment-Regimes/blob/master/test/g-computation-formula.jpeg]]
+![image](https://github.com/ShupingR/Multi-Stage-Constrained-Optimal-Treatment-Regimes/blob/master/test/g-computation-formula.jpeg)
