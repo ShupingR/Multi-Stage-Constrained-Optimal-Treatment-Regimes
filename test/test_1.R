@@ -91,21 +91,6 @@ fitX2$estimatedRisk
 print(fitX2)
 plot(fitX2, L1Test, LTest$X2)
 
-########################
-# treatment assignment #
-########################
-tau1 = c(1,2)
-tau2 = c(2,1,1,2)
-intTrain = int[1:round(0.7*n)]
-T1.pred = 1*( as.matrix(data.frame(intTrain, LTrain$X1)) %*% tau1 > 0) 
-T1.pred[T1 == 0] <- -1
-L1.pred = as.matrix(data.frame(LTrain$X1, T1.pred))
-X2.pred = predict.FlexCoDE(fitX2, L1.pred)$z
-X2.pred = X2.pred[1:700]
-H2.pred= data.frame(intTrain, LTrain$X1, T1.pred ,X2.pred)
-T2.pred = 1*(as.matrix(H2.pred) %*% tau2 > 0)
-T2.pred[T2.pred == 0] <- -1
-Y.pred = predict.FlexCoDE(fitY,
-         as.matrix(data.frame(LTrain$X1, T1.pred, X2.pred, T2.pred)))$z
-Z.pred = predict.FlexCoDE(fitZ,
-         as.matrix(data.frame(LTrain$X1, T1.pred, X2.pred, T2.pred)))$z
+## save 
+save(fitY, fitZ, fitX2, file = "fit.Rdata")
+save(L1Train, file="L1Train.Rdata")
