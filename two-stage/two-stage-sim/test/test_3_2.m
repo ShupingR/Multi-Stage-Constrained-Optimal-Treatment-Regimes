@@ -12,8 +12,8 @@
 %%
 clc
 clear
-
-parfor rep = 1:150
+parpool(24)
+for rep = 1:150
     testseed = 350 + rep;
     disp(rep);
     rng(testseed, 'twister');
@@ -90,7 +90,9 @@ parfor rep = 1:150
     % display('C')
     % Create the kappaList for the constraint
     stdZ = std(Z);
-    kappaList = linspace (min(Z) - 0.5 * stdZ , max(Z) + 0.5 * stdZ, nk);
+    disp(min(Z));
+    disp(max(Z));
+    kappaList = linspace ( 7.00 , 24, nk);
     kappaListFile =  'test7_kappaList.txt';
     dlmwrite(kappaListFile, kappaList, '-append');
     %reach = 0;
