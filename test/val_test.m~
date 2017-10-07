@@ -1,8 +1,0 @@
-function obj =  val_test (tau) 
-      dlmwrite('tau.txt', tau);
-      system('/usr/local/bin/R CMD BATCH test_2.R');
-      load aveY.txt
-      
-end
-    
- 
