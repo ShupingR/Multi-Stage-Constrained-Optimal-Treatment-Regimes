@@ -58,40 +58,41 @@ end
 fprintf(FID, '\\end{tabular}\n');
 fclose(FID);
   
-%   % plot
-%   width=10;
-%   height=8;
-%   x0=1;
-%   y0=1;
-%   figure('Units','inches', 'Position',[x0 y0 width height],...
-%   'PaperPositionMode','auto');
-% % (x0,y0) = position of the lower left side of the figure
-%    c = printtab(:,2);
-%    y1 = printtab(:,3);
-%    std1 = printtab(:,4);
-%    y1U = y1 + 1.96*std1/sqrt(n);
-%    y1L = y1 - 1.96*std1/sqrt(n);
-%    y2 = printtab(:,5);
-%    std2 = printtab(:,6);
-%    y2U = y2 + 1.96*std2/sqrt(n);
-%    y2L = y2 - 1.96*std2/sqrt(n);
-%    plot(c,y1,'--ro',c,y2,'-.bo','LineWidth',1.5);
-% %    hold on;
-% %    plot(c,y1U,':', c,y1L,':', c,y2U,':',c,y2L,':','LineWidth',1.5);
-% %    hold off;
-%    hline = refline(1,0);
-%    set(hline,'LineStyle',':', 'LineWidth',1.5);
-%    xlabel({'$\nu$ bound on secondary potential outcome'}, ...
-%              'interpreter' ,'latex', 'FontSize',15 )
-%    ylabel({'$\widehat{V}$ values of estimated constrained optimal regimes'},...
-%             'interpreter' ,'latex', 'FontSize',15 )
-%    title({'Efficient Frontier Plot $\widehat{V}_1$ / $\widehat{V}_2$ vs. $\nu$'},...
-%           'interpreter' ,'latex', 'FontSize',15);
-%    legend({'$\widehat{V}_1$ vs. $\nu$',  '$\widehat{V}_2$ vs. $\nu$'}, ...
-%              'interpreter' ,'latex', 'Location','SouthEast','FontSize',15);
-%   % axis([0 t(end) -1.5 1.5]);
-%    set(gca, 'Units','normalized', ...
-%        'FontUnits','points',... 
-%        'FontWeight','normal',... 
-%        'FontSize',15);
-%    print(strcat('efficient_plot', num2str(setting)), '-dpdf', '-bestfit' ) ;
+% plot
+width=10;
+height=8;
+x0=1;
+y0=1;
+figure('Units','inches', 'Position',[x0 y0 width height],...
+'PaperPositionMode','auto');
+% (x0,y0) = position of the lower left side of the figure
+c = printtab(:,1);
+y1 = printtab(:,2);
+std1 = printtab(:,3);
+n = 150;
+y1U = y1 + 1.96*std1/sqrt(n);
+y1L = y1 - 1.96*std1/sqrt(n);
+y2 = printtab(:,4);
+std2 = printtab(:,5);
+y2U = y2 + 1.96*std2/sqrt(n);
+y2L = y2 - 1.96*std2/sqrt(n);
+plot(c,y1,'--ro',c,y2,'-.bo','LineWidth',1.5);
+hold on;
+plot(c,y1U,':', c,y1L,':', c,y2U,':',c,y2L,':','LineWidth',1.5);
+hold off;
+hline = refline(1,0);
+set(hline,'LineStyle',':', 'LineWidth',1.5);
+xlabel({'$\nu$ bound on secondary potential outcome'}, ...
+         'interpreter' ,'latex', 'FontSize',15 )
+ylabel({'$\widehat{V}$ values of estimated constrained optimal regimes'},...
+        'interpreter' ,'latex', 'FontSize',15 )
+title({'Efficient Frontier Plot $\widehat{V}_1$ / $\widehat{V}_2$ vs. $\nu$'},...
+      'interpreter' ,'latex', 'FontSize',15);
+legend({'$\widehat{V}_1$ vs. $\nu$',  '$\widehat{V}_2$ vs. $\nu$'}, ...
+         'interpreter' ,'latex', 'Location','SouthEast','FontSize',15);
+% axis([0 t(end) -1.5 1.5]);
+set(gca, 'Units','normalized', ...
+   'FontUnits','points',... 
+   'FontWeight','normal',... 
+   'FontSize',15);
+print('efficient_plot', '-dpdf', '-bestfit' ) ;
