@@ -1,9 +1,0 @@
-ns = 2;
-tau0 =[1,-2,3,-4,5,6];
-obj = @(tau) val_test(tau) ;
-opts = optimoptions(@fmincon,'Display','iter-detailed','Algorithm','interior-point' , 'FinDiffRelStep', 1e-2);  
- % opts = optimset('Algorithm', 'interior-point', 'FinDiffRelStep',1e-2); 
- constraint = [];
-problem = createOptimProblem('fmincon', 'objective', obj, 'x0', tau0,  'nonlcon', constraint, 'options', opts);
-ms = MultiStart('StartPointsToRun', 'all', 'Display','off');
-[tauSol, fval, exitflag] = run(ms, problem, ns);
