@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  23 MAR 2018 17:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  23 MAR 2018 17:39
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -592,26 +592,26 @@ Package: subfig 2005/06/28 ver: 1.3 subfig package
 ) (/Users/shuping.ruan/GitHub/thesis_research/Multi-Stage-Constrained-Optimal-Treatment-Regimes/paper/.texpadtmp/multi-stage.aux)
 \openout1 = `multi-stage.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 102.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 102.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 103.
+LaTeX Font Info:    ... okay on input line 103.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 103.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 103.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    ... okay on input line 103.
  ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 102.
+LaTeX Info: Redefining \selectfont on input line 103.
 \AtBeginShipoutBox=\box58
  (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -638,261 +638,261 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 103.
+LaTeX Font Info:    Try loading font information for U+msa on input line 104.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 103.
+LaTeX Font Info:    Try loading font information for U+msb on input line 104.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 106--107
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--109
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
 
 [1
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (20.14168pt too wide) in paragraph at lines 113--113
+Overfull \hbox (20.14168pt too wide) in paragraph at lines 114--114
 []\OT1/cmr/bx/n/12 Define multi-stage con-strained op-ti-mal treat-ment regimes 
  []
 
 [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 135--137
+Underfull \hbox (badness 10000) in paragraph at lines 136--138
 
  []
 
 
-Overfull \hbox (5.75061pt too wide) in paragraph at lines 319--320
+Overfull \hbox (5.75061pt too wide) in paragraph at lines 320--321
 \OT1/cmr/m/n/10 solved via in-te-rior point method, where we re-formalize the prob-lem via quadratic-
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 330--332
+Underfull \hbox (badness 10000) in paragraph at lines 331--333
 
  []
 
 
-Overfull \hbox (13.78773pt too wide) in paragraph at lines 333--334
+Overfull \hbox (13.78773pt too wide) in paragraph at lines 334--335
 []\OT1/cmr/m/n/10 The se-quence of so-lu-tions to prob-lem (2.4) forms a tra-jec-tory path $[][]$
  []
 
 
-Overfull \hbox (47.91986pt too wide) in paragraph at lines 492--492
+Overfull \hbox (47.91986pt too wide) in paragraph at lines 493--493
 [] 
  []
 
 [5] [6]
-Overfull \hbox (31.59227pt too wide) in paragraph at lines 631--632
+Overfull \hbox (31.59227pt too wide) in paragraph at lines 632--633
 []\OT1/cmr/bx/n/10 Corollary 2.2. []\OT1/cmr/m/it/10 Sup-pose all the as-sump-tions in Lemma 2.2.1 hold, and $[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y\OMS/cmsy/m/n/10 j[][] \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (63.43599pt too wide) in paragraph at lines 636--636
+Overfull \hbox (63.43599pt too wide) in paragraph at lines 637--637
 [] 
  []
 
 
-Overfull \hbox (63.43599pt too wide) in paragraph at lines 636--636
+Overfull \hbox (63.43599pt too wide) in paragraph at lines 637--637
 [] 
  []
 
 
 Package resizegather Warning: Equation line 1 is too large by 63.43599pt
-(resizegather)                in environment `gather' on input line 636.
+(resizegather)                in environment `gather' on input line 637.
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 824--826
+Underfull \hbox (badness 10000) in paragraph at lines 825--827
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 867--868
+Underfull \hbox (badness 10000) in paragraph at lines 868--869
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 876--878
+Underfull \hbox (badness 10000) in paragraph at lines 877--879
 
  []
 
 
-Overfull \hbox (45.99516pt too wide) in paragraph at lines 893--893
+Overfull \hbox (45.99516pt too wide) in paragraph at lines 894--894
 [] 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 893--896
+Underfull \hbox (badness 10000) in paragraph at lines 894--897
 
  []
 
 
-Overfull \hbox (43.43272pt too wide) in paragraph at lines 910--910
+Overfull \hbox (43.43272pt too wide) in paragraph at lines 911--911
 [] 
  []
 
 
-Overfull \hbox (9.34744pt too wide) in paragraph at lines 912--913
+Overfull \hbox (9.34744pt too wide) in paragraph at lines 913--914
 []\OT1/cmr/m/n/10 where $\OML/cmm/m/it/10 G[] []$ \OT1/cmr/m/n/10 is the joint con-di-tional dis-tri-bu-tion of $\OML/cmm/m/it/10 m[] []$\OT1/cmr/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 912--913
+Underfull \hbox (badness 10000) in paragraph at lines 913--914
 
  []
 
 [10]
-Overfull \hbox (46.2769pt too wide) in paragraph at lines 938--940
+Overfull \hbox (46.2769pt too wide) in paragraph at lines 939--941
 \OT1/cmr/m/n/10 Therefore, we model the joint dis-tri-bu-tion of the stan-dard-ized resid-u-als $(\OML/cmm/m/it/10 e[]; e[]; e[]; e[]; e[]\OT1/cmr/m/n/10 )$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 938--940
+Underfull \hbox (badness 10000) in paragraph at lines 939--941
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 942--943
+Underfull \hbox (badness 10000) in paragraph at lines 943--944
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 965--966
+Underfull \hbox (badness 10000) in paragraph at lines 966--967
 
  []
 
 [11] (./figs/result.tex) <./figs/efficient_plot.png, id=63, 1032.85875pt x 895.345pt>
 File: ./figs/efficient_plot.png Graphic file (type png)
  <use ./figs/efficient_plot.png>
-Package pdftex.def Info: ./figs/efficient_plot.png used on input line 979.
+Package pdftex.def Info: ./figs/efficient_plot.png used on input line 980.
 (pdftex.def)             Requested size: 310.4979pt x 269.15204pt.
  [12] (/Users/shuping.ruan/GitHub/thesis_research/Multi-Stage-Constrained-Optimal-Treatment-Regimes/paper/.texpadtmp/multi-stage.bbl [13 <./figs/efficient_plot.png>] [14] [15])
-Overfull \hbox (0.49313pt too wide) in paragraph at lines 1008--1008
+Overfull \hbox (0.49313pt too wide) in paragraph at lines 1009--1009
 [] 
  []
 
 
-Overfull \hbox (0.49313pt too wide) in paragraph at lines 1008--1008
+Overfull \hbox (0.49313pt too wide) in paragraph at lines 1009--1009
 [] 
  []
 
 Package resizegather Info: Equation line 1 is too large by 0.49313pt
-(resizegather)             in environment `gather' on input line 1008.
-LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 1036.
+(resizegather)             in environment `gather' on input line 1009.
+LaTeX Font Info:    Calculating math sizes for size <6.99997> on input line 1037.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 1036.
+(Font)              size <5> substituted on input line 1037.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.49998> not available
-(Font)              size <5> substituted on input line 1036.
+(Font)              size <5> substituted on input line 1037.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 1036.
+(Font)              size <5> substituted on input line 1037.
 
 [16]
 
 Package resizegather Warning: Equation line 1 is too large by 23.9412pt
-(resizegather)                in environment `gather*' on input line 1050.
+(resizegather)                in environment `gather*' on input line 1051.
 
 Package resizegather Info: Equation line 1 is too large by 3.6038pt
-(resizegather)             in environment `gather*' on input line 1054.
+(resizegather)             in environment `gather*' on input line 1055.
 
 Package resizegather Warning: Equation line 1 is too large by 224.83598pt
-(resizegather)                in environment `gather*' on input line 1071.
+(resizegather)                in environment `gather*' on input line 1072.
 
 [17]
-Overfull \hbox (17.66734pt too wide) in paragraph at lines 1102--1103
+Overfull \hbox (17.66734pt too wide) in paragraph at lines 1103--1104
 []\OT1/cmr/bx/n/10 Corollary B.1. []\OT1/cmr/m/it/10 Sup-pose all the as-sump-tions in Lemma 3 hold, and $[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 y\OMS/cmsy/m/n/10 j[][] \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (57.88617pt too wide) in paragraph at lines 1107--1107
+Overfull \hbox (57.88617pt too wide) in paragraph at lines 1108--1108
 [] 
  []
 
 
-Overfull \hbox (57.88617pt too wide) in paragraph at lines 1107--1107
+Overfull \hbox (57.88617pt too wide) in paragraph at lines 1108--1108
 [] 
  []
 
 
 Package resizegather Warning: Equation line 1 is too large by 57.88617pt
-(resizegather)                in environment `gather' on input line 1107.
+(resizegather)                in environment `gather' on input line 1108.
 
 
-Overfull \hbox (30.08153pt too wide) in paragraph at lines 1116--1118
+Overfull \hbox (30.08153pt too wide) in paragraph at lines 1117--1119
 \U/msb/m/n/10 E []$ $\OT1/cmr/m/n/10 = \OML/cmm/m/it/10 o[]\OT1/cmr/m/n/10 (1)$, due to the con-sis-tency of $[](\OML/cmm/m/it/10 y\OMS/cmsy/m/n/10 j[][] \OT1/cmr/m/n/10 =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1116--1118
+Underfull \hbox (badness 10000) in paragraph at lines 1117--1119
 
  []
 
 [18]
-Overfull \hbox (85.38618pt too wide) in paragraph at lines 1124--1124
+Overfull \hbox (85.38618pt too wide) in paragraph at lines 1125--1125
 [] 
  []
 
 
-Overfull \hbox (85.38618pt too wide) in paragraph at lines 1124--1124
+Overfull \hbox (85.38618pt too wide) in paragraph at lines 1125--1125
 [] 
  []
 
 
 Package resizegather Warning: Equation line 1 is too large by 85.38618pt
-(resizegather)                in environment `gather' on input line 1124.
+(resizegather)                in environment `gather' on input line 1125.
 
 
-Overfull \hbox (65.38612pt too wide) in paragraph at lines 1134--1134
+Overfull \hbox (65.38612pt too wide) in paragraph at lines 1135--1135
 [] 
  []
 
 
-Overfull \hbox (65.38612pt too wide) in paragraph at lines 1134--1134
+Overfull \hbox (65.38612pt too wide) in paragraph at lines 1135--1135
 [] 
  []
 
 
 Package resizegather Warning: Equation line 1 is too large by 65.38612pt
-(resizegather)                in environment `gather' on input line 1134.
+(resizegather)                in environment `gather' on input line 1135.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 1147.
+(Font)              size <5> substituted on input line 1148.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <3.49998> not available
-(Font)              size <5> substituted on input line 1147.
+(Font)              size <5> substituted on input line 1148.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <3.49998> not available
-(Font)              size <5> substituted on input line 1147.
+(Font)              size <5> substituted on input line 1148.
 
 [19]
-Overfull \hbox (22.14742pt too wide) in paragraph at lines 1178--1178
+Overfull \hbox (22.14742pt too wide) in paragraph at lines 1179--1179
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1182--1185
+Underfull \hbox (badness 10000) in paragraph at lines 1183--1186
 
  []
 
 
-Overfull \hbox (38.82443pt too wide) in paragraph at lines 1196--1196
+Overfull \hbox (38.82443pt too wide) in paragraph at lines 1197--1197
 [] 
  []
 
 
-Overfull \hbox (38.82443pt too wide) in paragraph at lines 1196--1196
+Overfull \hbox (38.82443pt too wide) in paragraph at lines 1197--1197
 [] 
  []
 
@@ -909,14 +909,14 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  15756 strings out of 492995
  284652 string characters out of 6132704
- 457748 words of memory out of 5000000
+ 457754 words of memory out of 5000000
  19104 multiletter control sequences out of 15000+600000
  23728 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,24n,39p,10381b,2354s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.
 pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on /Users/shuping.ruan/GitHub/thesis_research/Multi-Stage-Constrained-Optimal-Treatment-Regimes/paper/.texpadtmp/multi-stage.pdf (20 pages, 584693 bytes).
+Output written on /Users/shuping.ruan/GitHub/thesis_research/Multi-Stage-Constrained-Optimal-Treatment-Regimes/paper/.texpadtmp/multi-stage.pdf (20 pages, 583643 bytes).
 PDF statistics:
  190 PDF objects out of 1000 (max. 8388607)
  135 compressed objects within 2 object streams
