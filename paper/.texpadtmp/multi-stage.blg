@@ -1,0 +1,93 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: /Users/shuping.ruan/GitHub/thesis_research/Multi-Stage-Constrained-Optimal-Treatment-Regimes/paper/.texpadtmp/multi-stage.aux
+The style file: plain.bst
+Database file #1: ../ShupingR-thesis.bib
+I was expecting a `{' or a `('---line 2 of file ../ShupingR-thesis.bib
+ : 
+ : @comment{model}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `{' or a `('---line 19 of file ../ShupingR-thesis.bib
+ : 
+ : @comment{policy evaluation, lpsi}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `{' or a `('---line 45 of file ../ShupingR-thesis.bib
+ : 
+ : @comment{interior-poin}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `{' or a `('---line 108 of file ../ShupingR-thesis.bib
+ : 
+ : @comment{KDE}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 554 of file ../ShupingR-thesis.bib
+ : @article{Laber2014
+ :                   ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 634 of file ../ShupingR-thesis.bib
+ :  url = volume 
+ :               = {60},
+I'm skipping whatever remains of this entry
+I was expecting a `{' or a `('---line 943 of file ../ShupingR-thesis.bib
+ : 
+ : @article{Neyman,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Name 1 in "{Jerzy Splawa-Neyman, D. M. Dabrowska}, and T. P. Speed" has a comma at the end for entry Neyman
+while executing---line 1049 of file plain.bst
+Warning--empty journal in Lindsay1995
+Warning--empty publisher in Chakraborty2013
+Warning--there's a number but no volume in Hernan2006
+Warning--there's a month but no year in Hernan2006
+Warning--empty journal in Hunter2014
+Name 1 in "{Jerzy Splawa-Neyman, D. M. Dabrowska}, and T. P. Speed" has a comma at the end for entry Neyman
+while executing---line 1090 of file plain.bst
+Warning--empty journal in Laber2014
+Warning--empty journal in Linn2014
+Warning--there's a number but no volume in Rubin1980
+Warning--empty journal in Song2011
+You've used 30 entries,
+            2118 wiz_defined-function locations,
+            690 strings with 9436 characters,
+and the built_in function-call counts, 10420 in all, are:
+= -- 1018
+> -- 538
+< -- 3
++ -- 212
+- -- 182
+* -- 826
+:= -- 1768
+add.period$ -- 89
+call.type$ -- 30
+change.case$ -- 180
+chr.to.int$ -- 0
+cite$ -- 39
+duplicate$ -- 344
+empty$ -- 757
+format.name$ -- 182
+if$ -- 2095
+int.to.chr$ -- 0
+int.to.str$ -- 30
+missing$ -- 30
+newline$ -- 152
+num.names$ -- 60
+pop$ -- 162
+preamble$ -- 1
+purify$ -- 151
+quote$ -- 0
+skip$ -- 235
+stack$ -- 0
+substring$ -- 705
+swap$ -- 46
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 118
+warning$ -- 9
+while$ -- 104
+width$ -- 32
+write$ -- 319
+(There were 9 error messages)

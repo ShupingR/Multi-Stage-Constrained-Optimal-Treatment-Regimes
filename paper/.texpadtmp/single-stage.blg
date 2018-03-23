@@ -1,0 +1,100 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: /Users/shuping.ruan/GitHub/thesis_research/Multi-Stage-Constrained-Optimal-Treatment-Regimes/paper/.texpadtmp/single-stage.aux
+The style file: plain.bst
+Database file #1: ../ShupingR-thesis.bib
+I was expecting a `{' or a `('---line 2 of file ../ShupingR-thesis.bib
+ : 
+ : @comment{model}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `{' or a `('---line 19 of file ../ShupingR-thesis.bib
+ : 
+ : @comment{policy evaluation, lpsi}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `{' or a `('---line 45 of file ../ShupingR-thesis.bib
+ : 
+ : @comment{interior-poin}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `{' or a `('---line 108 of file ../ShupingR-thesis.bib
+ : 
+ : @comment{KDE}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 554 of file ../ShupingR-thesis.bib
+ : @article{Laber2014
+ :                   ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 634 of file ../ShupingR-thesis.bib
+ :  url = volume 
+ :               = {60},
+I'm skipping whatever remains of this entry
+I was expecting a `{' or a `('---line 943 of file ../ShupingR-thesis.bib
+ : 
+ : @article{Neyman,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Name 1 in "{Jerzy Splawa-Neyman, D. M. Dabrowska}, and T. P. Speed" has a comma at the end for entry Neyman
+while executing---line 1049 of file plain.bst
+Warning--empty publisher in fiacco
+Warning--empty year in fiacco
+Warning--empty journal in Lindsay1995
+Warning--empty journal in Theo
+Warning--empty publisher in Chakraborty2013
+Warning--can't use both volume and number fields in Forsgren2002
+Warning--empty publisher in Forsgren2002
+Warning--there's a number but no volume in Hernan2006
+Warning--there's a month but no year in Hernan2006
+Warning--empty journal in Hunter2014
+Name 1 in "{Jerzy Splawa-Neyman, D. M. Dabrowska}, and T. P. Speed" has a comma at the end for entry Neyman
+while executing---line 1090 of file plain.bst
+Warning--empty journal in Laber2014
+Warning--empty booktitle in Linn2014a
+Warning--empty publisher in Linn2014a
+Warning--empty journal in Linn2014
+Warning--there's a number but no volume in Rubin1980
+Warning--empty journal in Song2011
+You've used 33 entries,
+            2118 wiz_defined-function locations,
+            709 strings with 9774 characters,
+and the built_in function-call counts, 11210 in all, are:
+= -- 1086
+> -- 565
+< -- 5
++ -- 223
+- -- 190
+* -- 861
+:= -- 1887
+add.period$ -- 98
+call.type$ -- 33
+change.case$ -- 190
+chr.to.int$ -- 0
+cite$ -- 49
+duplicate$ -- 394
+empty$ -- 834
+format.name$ -- 190
+if$ -- 2273
+int.to.chr$ -- 0
+int.to.str$ -- 33
+missing$ -- 37
+newline$ -- 166
+num.names$ -- 66
+pop$ -- 202
+preamble$ -- 1
+purify$ -- 161
+quote$ -- 0
+skip$ -- 262
+stack$ -- 0
+substring$ -- 712
+swap$ -- 58
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 122
+warning$ -- 16
+while$ -- 110
+width$ -- 35
+write$ -- 346
+(There were 9 error messages)

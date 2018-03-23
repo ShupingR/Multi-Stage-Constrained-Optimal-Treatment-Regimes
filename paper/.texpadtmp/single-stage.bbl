@@ -1,0 +1,191 @@
+\begin{thebibliography}{10}
+
+\bibitem{fiacco}
+Garth P.~McCormick Anthony V.~Fiacco.
+\newblock {\em Nonlinear Programming: Sequential Unconstrained Minimization
+  Techniques}.
+
+\bibitem{Lindsay1995}
+Patrick Billingsley.
+\newblock {Probability {\&} Measure}.
+\newblock page 362, 1995.
+
+\bibitem{Byrd1999}
+Richard~H. Byrd, Mary~E. Hribar, and Jorge Nocedal.
+\newblock {An Interior Point Algorithm for Large-Scale Nonlinear Programming}.
+\newblock {\em SIAM Journal on Optimization}, 9(4):877--900, 1999.
+
+\bibitem{Theo}
+Theophilos Cacoullos.
+\newblock {Estimation of a Multivariate Density}.
+\newblock pages 251--255, 1964.
+
+\bibitem{Chakraborty2013}
+Bibhas Chakraborty and Erica~E.M. Moodie.
+\newblock {\em {Statistical Methods for Dynamic Treatment Regimes}}.
+\newblock 2013.
+
+\bibitem{Forsgren2002}
+Anders Forsgren, PE~Gill, and MH~Wright.
+\newblock {\em {Interior Methods for Nonlinear Optimization}}, volume~44.
+\newblock 2002.
+
+\bibitem{henderson2010}
+Robin Henderson, Phil Ansell, and Deyadeen Alshibani.
+\newblock {Regret-regression for optimal dynamic treatment regimes.}
+\newblock {\em Biometrics}, 66(4):1192--201, December 2010.
+
+\bibitem{Hernan2006}
+Miguel~A Hernan and James~M Robins.
+\newblock {Estimating causal effects from epidemiological data.}
+\newblock {\em Journal of epidemiology and community health}, (7):578--86,
+  July.
+
+\bibitem{Hunter2014}
+David~R Hunter.
+\newblock {Notes for a graduate-level course in asymptotics for statisticians}.
+\newblock page~97, 2014.
+
+\bibitem{Neyman}
+{Jerzy Splawa-Neyman, D. M. Dabrowska} and T.~P. Speed.
+\newblock {On the Application of Probability Theory to Agricultural
+  Experiments. Essay on Principles. Section 9}.
+\newblock {\em Statistical Science}, 5(4):465--472, 1990.
+
+\bibitem{LaberTwo2014}
+Eric~B. Laber, Daniel~J. Lizotte, and Bradley Ferguson.
+\newblock {Set-valued dynamic treatment regimes for competing outcomes}.
+\newblock {\em Biometrics}, 70(1):53--61, 2014.
+
+\bibitem{Laber2014}
+Eric~B Laber, Daniel~J Lizotte, Min Qian, William~E Pelham, and Susan~A Murphy.
+\newblock {Dynamic treatment regimes : technical challenges and applications}.
+\newblock 2014.
+
+\bibitem{Linn2014a}
+Kristin~A. Linn, Eric~B. Laber, and Leonard~A. Stefanski.
+\newblock {Constrained estimation for competing outcomes}.
+\newblock 2014.
+
+\bibitem{Linn2014}
+Kristin~A Linn, Eric~B Laber, and Leonard~A Stefanski.
+\newblock {Interactive Q-learning for Probabilities and Quantiles}.
+\newblock 2014.
+
+\bibitem{Lizotte2010}
+Daniel~J Lizotte, Michael~H. Bowling, and Susan~A. Murphy.
+\newblock {Efficient reinforcement learning with multiple reward functions for
+  randomized controlled trial analysis}.
+\newblock {\em in Proc. of Int. Conf. on Machine Learning}, pages 695--702,
+  2010.
+
+\bibitem{Markowitz1952}
+Harry Markowitz.
+\newblock {PORTFOLIO SELECTION}.
+\newblock {\em The Journal of Finance}, 7(1):77--91, March 1952.
+
+\bibitem{Nahum2012}
+Inbal Nahum-Shani, Min Qian, Daniel Almirall, William~E. Pelham, Beth Gnagy,
+  Gregory~A. Fabiano, James~G. Waxmonsky, Jihnhee Yu, and Susan~A. Murphy.
+\newblock {Q-learning: A data analysis method for constructing adaptive
+  interventions.}
+\newblock {\em Psychological Methods}, 17(4):478--494, 2012.
+
+\bibitem{NoceWrig06}
+Jorge Nocedal and Stephen~J. Wright.
+\newblock {\em Numerical Optimization}.
+\newblock Springer, New York, NY, USA, second edition, 2006.
+
+\bibitem{Orellana2010a}
+Liliana Orellana, Andrea Rotnitzky, and James~M Robins.
+\newblock {Dynamic regime marginal structural mean models for estimation of
+  optimal dynamic treatment regimes, Part I: main content.}
+\newblock {\em The international journal of biostatistics}, 6(2):Article 8,
+  January 2010.
+
+\bibitem{Pagan1999}
+A.~R. Pagan and Aman. Ullah.
+\newblock {\em {Nonparametric econometrics / Adrian Pagan, Aman Ullah.}}
+\newblock Themes in modern econometrics. Cambridge University Press,,
+  Cambridge, 1999.
+
+\bibitem{Robins1997}
+James~M. Robins.
+\newblock {Causal Inference from Complex Longitudinal Data}, 1997.
+
+\bibitem{gestimation}
+James~M. Robins, Donald Blevins, Grant Ritter, and Michael Wulfsohn.
+\newblock G-estimation of the effect of prophylaxis therapy for pneumocystis
+  carinii pneumonia on the survival of aids patients.
+\newblock {\em Epidemiology}, 3(4):319--336, 1992.
+
+\bibitem{Rubin1980}
+D.~B. Rubin.
+\newblock {Discussion of Randomized analysis of experimental data: The Fisher
+  randomization test by D. Basu}.
+\newblock {\em Journal of the American Statistical Association}, (75):591--593,
+  1980.
+
+\bibitem{Rubin2005}
+Donald~B. Rubin.
+\newblock {Causal inference using potential outcomes: Design, modeling,
+  decisions}.
+\newblock {\em Journal of the American Statistical Association},
+  100(469):322--331, 2005.
+
+\bibitem{Schulte2014}
+Phillip~J. Schulte, Anastasios~A. Tsiatis, Eric~B. Laber, and Marie Davidian.
+\newblock {Q- and A-Learning Methods for Estimating Optimal Dynamic Treatment
+  Regimes}.
+\newblock {\em Statistical Science}, 29(4):640--661, 2014.
+
+\bibitem{Silverman1978a}
+Bernard~W Silverman.
+\newblock {Weak and Strong Uniform Consistency of the Kernel Estimate of a
+  Density and its Derivatives}.
+\newblock {\em The Annals of Statistics}, 6(1):177--184, 1978.
+
+\bibitem{Song2011}
+Rui Song, Weiwei Wang, Donglin Zeng, and Michael~R. Kosorok.
+\newblock {Penalized Q-Learning for Dynamic Treatment Regimes}.
+\newblock August 2011.
+
+\bibitem{Waltz2006}
+R.~A. Waltz, J.~L. Morales, J.~Nocedal, and D.~Orban.
+\newblock {An interior algorithm for nonlinear optimization that combines line
+  search and trust region steps}.
+\newblock {\em Mathematical Programming}, 107(3):391--408, 2006.
+
+\bibitem{Wang2012}
+Lu~Wang, Andrea Rotnitzky, Xihong Lin, Randall~E Millikan, and Peter~F Thall.
+\newblock {Evaluation of Viable Dynamic Treatment Regimes in a Sequentially
+  Randomized Trial of Advanced Prostate Cancer.}
+\newblock {\em Journal of the American Statistical Association},
+  107(498):493--508, June 2012.
+
+\bibitem{Zhang2012}
+Baqun Zhang, Anastasios~A. Tsiatis, Marie Davidian, Min Zhang, and Eric Laber.
+\newblock {Estimating optimal treatment regimes from a classification
+  perspective}.
+\newblock {\em Stat}, 1(1):103--114, 2012.
+
+\bibitem{Zhang2012b}
+Baqun Zhang, Anastasios~a. Tsiatis, Eric~B. Laber, and Marie Davidian.
+\newblock {A Robust Method for Estimating Optimal Treatment Regimes}.
+\newblock {\em Biometrics}, 68(4):1010--1018, 2012.
+
+\bibitem{Zhao2015}
+Ying-Qi Zhao, Donglin Zeng, Eric~B. Laber, and Michael~R. Kosorok.
+\newblock {New Statistical Learning Methods for Estimating Optimal Dynamic
+  Treatment Regimes}.
+\newblock {\em Journal of the American Statistical Association},
+  110(510):583--598, 2015.
+
+\bibitem{Zhao2012}
+Yingqi Zhao, Donglin Zeng, a~John Rush, and Michael~R Kosorok.
+\newblock {Estimating Individualized Treatment Rules Using Outcome Weighted
+  Learning}.
+\newblock {\em Journal of the American Statistical Association},
+  107(449):1106--1118, 2012.
+
+\end{thebibliography}
